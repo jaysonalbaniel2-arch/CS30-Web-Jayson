@@ -141,10 +141,10 @@
 
                 <div class="h-4 w-px bg-sky-200 dark:bg-slate-800 hidden md:block"></div>
 
-                <!-- Dynamic Measurement ID & Live Event Indicator -->
+                <!-- GA4 Tagging Indicator -->
                 <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-xl bg-sky-100 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-xs font-mono text-sky-800 dark:text-sky-300">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>GA4: G-8NLPP45RS3</span>
+                    <span>GA4 Tagged: G-8NLPP45RS3</span>
                 </div>
 
                 <!-- Theme Toggle Button -->
@@ -156,10 +156,10 @@
         </div>
     </header>
 
-    <!-- MAIN PAGE CONTAINER -->
+    <!-- MAIN CONTAINER -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        <!-- STICKY SIDEBAR TABLE OF CONTENTS (DESKTOP) -->
+        <!-- SIDEBAR NAVIGATION -->
         <aside class="hidden lg:block lg:col-span-3">
             <div class="sticky top-24 space-y-4">
                 <div class="p-5 rounded-2xl glass-card">
@@ -179,7 +179,6 @@
                     </nav>
                 </div>
 
-                <!-- Author Profile Card -->
                 <div class="p-4 rounded-2xl bg-sky-100/80 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 text-xs text-sky-900 dark:text-sky-300 space-y-2">
                     <div class="font-bold text-sky-800 dark:text-sky-400 flex items-center gap-1.5">
                         <span>👤</span> Featured Author
@@ -217,7 +216,7 @@
                         An interactive exploration on translating court discipline into personal growth, structured time management, stress resilience, and long-term vitality.
                     </p>
 
-                    <!-- QUICK INTERACTION METRICS & ACTIONS -->
+                    <!-- QUICK INTERACTION BUTTONS -->
                     <div class="flex flex-wrap items-center gap-3 pt-2">
                         <button id="btn-like" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:bg-sky-50 hover:border-sky-300 transition-all flex items-center gap-1.5 shadow-sm">
                             <span id="like-icon">❤️</span> Like Article (<span id="like-count">128</span>)
@@ -230,7 +229,6 @@
                         </button>
                     </div>
 
-                    <!-- METADATA CARDS -->
                     <div class="pt-6 border-t border-sky-200 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
                         <div>
                             <span class="text-slate-500 dark:text-slate-400 block font-medium">AUTHOR</span>
@@ -262,16 +260,6 @@
                         Achieving high performance in sports or personal fitness should never come at the cost of your long-term health, mental clarity, or professional aspirations. By applying intentional routine design, energy management, and athletic mindset principles, you can excel on the court without compromising daily success.
                     </p>
                 </div>
-
-                <div class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-base">
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white pt-2">1. Harmony Between Court and Life</h3>
-                    <p>
-                        Whether preparing for a competitive tournament or staying consistent with daily fitness goals, active individuals frequently navigate demanding calendars. Physical fatigue, tight deadlines, and personal obligations require a high level of mental resilience and tactical planning.
-                    </p>
-                    <p>
-                        True balance is not about splitting hours equally between training and rest—it is about maximizing focus during active hours and intentionally prioritizing physical recovery.
-                    </p>
-                </div>
             </section>
 
             <!-- WIDGET 1: 24-HOUR LIFE BALANCE CALCULATOR -->
@@ -292,7 +280,6 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
                     <!-- Sliders Column -->
                     <div class="lg:col-span-7 space-y-4">
-                        <!-- Sleep Slider -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700 dark:text-slate-300">😴 Sleep & Physical Recovery</span>
@@ -301,7 +288,6 @@
                             <input type="range" id="input-sleep" min="2" max="12" value="7" class="w-full h-2 bg-sky-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
 
-                        <!-- Focused Work / Learning Slider -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700 dark:text-slate-300">💻 Work, Study & Focused Learning</span>
@@ -310,7 +296,6 @@
                             <input type="range" id="input-class" min="1" max="12" value="7" class="w-full h-2 bg-sky-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
 
-                        <!-- Sports & Fitness Slider -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700 dark:text-slate-300">🏸 Athletic Training & Workouts</span>
@@ -319,7 +304,6 @@
                             <input type="range" id="input-training" min="1" max="12" value="4" class="w-full h-2 bg-sky-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
 
-                        <!-- Commute & Travel Slider -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700 dark:text-slate-300">🚌 Commute & Travel</span>
@@ -328,7 +312,6 @@
                             <input type="range" id="input-travel" min="0" max="8" value="2" class="w-full h-2 bg-sky-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
 
-                        <!-- Rest & Personal Time Slider -->
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700 dark:text-slate-300">☕ Meals, Social & Leisure</span>
@@ -338,7 +321,7 @@
                         </div>
                     </div>
 
-                    <!-- Donut Chart & Diagnostic Display -->
+                    <!-- Donut Chart Display -->
                     <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-sky-100/60 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 text-center">
                         <div class="relative w-44 h-44">
                             <canvas id="timeChart" width="176" height="176"></canvas>
@@ -352,78 +335,6 @@
                             <p id="risk-desc" class="text-xs text-slate-600 dark:text-slate-300 px-2 leading-relaxed font-medium">
                                 Your schedule allows ample physical recovery and sustainable daily focus.
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- KEY LIFE CHALLENGES -->
-            <section id="challenges" class="space-y-6">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <span class="text-sky-600">02.</span> Core Challenges in Peak Life Management
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 rounded-2xl glass-card space-y-3 hover:border-sky-400 transition-colors">
-                        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl font-bold">⚡</div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Energy Depletion & Fatigue</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            High-intensity workouts deplete physical energy stores. Without proper nutrition and rest, mental sharpness during work or creative tasks drops significantly.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl glass-card space-y-3 hover:border-sky-400 transition-colors">
-                        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl font-bold">🗓️</div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Time Fragmenting</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Frequent transitions between training facilities, work, and family responsibilities create fragmented days that make deep work challenging without clear systems.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl glass-card space-y-3 hover:border-sky-400 transition-colors">
-                        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl font-bold">🎯</div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Dual Expectation Pressure</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Striving for excellence in physical performance while maintaining high professional or personal standards requires constant intentional priority management.
-                        </p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl glass-card space-y-3 hover:border-sky-400 transition-colors">
-                        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-slate-800 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl font-bold">🛡️</div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Neglecting Recovery Windows</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Treating downtime as "wasted time" leads directly to physical overtraining and mental burnout. True peak performers view sleep and rest as fundamental strategies.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TIME MANAGEMENT FRAMEWORKS -->
-            <section id="timemanagement" class="space-y-6">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <span class="text-sky-600">03.</span> Actionable Time Management Frameworks
-                </h2>
-
-                <div class="p-6 sm:p-8 rounded-2xl glass-card space-y-4">
-                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
-                        Athletes build consistency by adopting structured planning systems rather than relying on spontaneous motivation.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                        <div class="p-4 rounded-xl bg-sky-100/60 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-700 space-y-2">
-                            <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">Framework 1</span>
-                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">Time Blocking</h4>
-                            <p class="text-xs text-slate-600 dark:text-slate-400">Dedicate fixed time blocks for training, deep focused work, and rest to prevent multitasking stress.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-sky-100/60 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-700 space-y-2">
-                            <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">Framework 2</span>
-                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">Micro-Recovery Windows</h4>
-                            <p class="text-xs text-slate-600 dark:text-slate-400">Incorporate 15-minute mental resets between workouts and work blocks to refresh focus.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-sky-100/60 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-700 space-y-2">
-                            <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">Framework 3</span>
-                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">The Rule of 3 Goals</h4>
-                            <p class="text-xs text-slate-600 dark:text-slate-400">Identify 3 core non-negotiable achievements daily across health, career, and personal growth.</p>
                         </div>
                     </div>
                 </div>
@@ -469,7 +380,6 @@
                 </div>
 
                 <div id="quiz-container" class="space-y-6">
-                    <!-- Question 1 -->
                     <div class="p-5 rounded-2xl bg-sky-100/50 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 space-y-3">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white">1. How consistently do you maintain 7–8 hours of quality sleep on training days?</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
@@ -479,7 +389,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 2 -->
                     <div class="p-5 rounded-2xl bg-sky-100/50 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 space-y-3">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white">2. Do you plan your weekly schedule in advance around workout times?</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
@@ -489,7 +398,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 3 -->
                     <div class="p-5 rounded-2xl bg-sky-100/50 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 space-y-3">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white">3. How well do you manage fatigue during high-demand weeks?</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
@@ -509,7 +417,7 @@
                 </div>
             </section>
 
-            <!-- WIDGET 4: INTERACTIVE GOAL REFLECTION PAD -->
+            <!-- WIDGET 4: REFLECTION PAD -->
             <section id="pad" class="p-6 sm:p-8 rounded-3xl glass-card border border-sky-200 dark:border-slate-800 space-y-4">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Interactive Tool 04</div>
@@ -519,7 +427,7 @@
                     </p>
                 </div>
 
-                <textarea id="goal-textarea" rows="4" placeholder="Type your 3 core weekly goals here (e.g., 1. Maintain 8h sleep, 2. Complete 3 badminton sessions, 3. Finish project draft)..." class="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-sky-500 transition-all"></textarea>
+                <textarea id="goal-textarea" rows="4" placeholder="Type your 3 core weekly goals here..." class="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border border-sky-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-sky-500 transition-all"></textarea>
 
                 <div class="flex justify-between items-center text-xs">
                     <span id="save-status" class="text-emerald-600 dark:text-emerald-400 font-medium">Saved locally</span>
@@ -529,7 +437,7 @@
                 </div>
             </section>
 
-            <!-- FEEDBACK & SUMMARY -->
+            <!-- FEEDBACK SECTION -->
             <section id="feedback" class="p-6 sm:p-8 rounded-3xl glass-card border border-sky-200 dark:border-slate-800 space-y-4 text-center">
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white">Was this Peak Performance Guide helpful?</h3>
                 <div class="flex justify-center gap-4">
@@ -541,7 +449,7 @@
                     </button>
                 </div>
                 <p id="feedback-thanks" class="hidden text-xs text-emerald-600 dark:text-emerald-400 font-semibold pt-2">
-                    Thank you for your feedback! Your response has been tracked.
+                    Thank you for your feedback! Your response has been tracked in Google Analytics.
                 </p>
             </section>
 
@@ -560,15 +468,15 @@
 
     <!-- INTERACTIVE JAVASCRIPT & GA4 TRACKING LOGIC -->
     <script>
-        // --- HELPER FUNCTION FOR GA4 EVENT TRACKING ---
+        // Universal helper for dispatching GA4 custom events
         function trackEvent(eventName, params = {}) {
             if (typeof gtag === 'function') {
                 gtag('event', eventName, params);
-                console.log(`[GA4 Event] ${eventName}`, params);
+                console.log(`[GA4 Tracked Event] ${eventName}:`, params);
             }
         }
 
-        // --- 1. THEME TOGGLE LOGIC ---
+        // 1. Theme Switch Tracking
         const themeToggleBtn = document.getElementById('theme-toggle');
         const sunIcon = document.getElementById('sun-icon');
         const moonIcon = document.getElementById('moon-icon');
@@ -584,32 +492,9 @@
             });
         });
 
-        // --- 2. READING PROGRESS BAR & SCROLL MILESTONES ---
-        const progressBar = document.getElementById('progress-bar');
-        let trackedMilestones = new Set();
-
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + '%';
-
-            // Scroll depth milestones
-            [25, 50, 75, 100].forEach(milestone => {
-                if (scrolled >= milestone && !trackedMilestones.has(milestone)) {
-                    trackedMilestones.add(milestone);
-                    trackEvent('scroll_depth', {
-                        event_category: 'Engagement',
-                        event_label: `${milestone}%`,
-                        value: milestone
-                    });
-                }
-            });
-        });
-
-        // --- 3. HEADER & TOC NAV LINK TRACKING ---
+        // 2. Navigation Click Tracking
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function () {
                 const targetId = this.getAttribute('href');
                 trackEvent('navigation_click', {
                     event_category: 'Navigation',
@@ -618,7 +503,7 @@
             });
         });
 
-        // --- 4. ARTICLE HERO QUICK ACTIONS ---
+        // 3. Hero Actions Tracking
         let likeCount = 128;
         let liked = false;
         const btnLike = document.getElementById('btn-like');
@@ -642,7 +527,6 @@
         btnBookmark.addEventListener('click', () => {
             bookmarked = !bookmarked;
             btnBookmark.classList.toggle('bg-sky-100', bookmarked);
-            btnBookmark.classList.toggle('dark:bg-slate-700', bookmarked);
 
             trackEvent('bookmark_article', {
                 event_category: 'Engagement',
@@ -661,7 +545,7 @@
             });
         });
 
-        // --- 5. WIDGET 1: 24-HOUR CALCULATOR CHART & DIAGNOSTIC ---
+        // 4. Widget 1: Sliders Tracking
         const inputs = {
             sleep: document.getElementById('input-sleep'),
             class: document.getElementById('input-class'),
@@ -678,11 +562,6 @@
             rest: document.getElementById('val-rest')
         };
 
-        const hourPill = document.getElementById('hour-pill');
-        const riskBadge = document.getElementById('risk-badge');
-        const riskDesc = document.getElementById('risk-desc');
-
-        // Initialize Chart.js Donut
         const ctx = document.getElementById('timeChart').getContext('2d');
         const timeChart = new Chart(ctx, {
             type: 'doughnut',
@@ -697,9 +576,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: true,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 cutout: '70%'
             }
         });
@@ -717,63 +594,36 @@
             values.travel.textContent = `${travel} hrs`;
             values.rest.textContent = `${rest} hrs`;
 
-            const total = sleep + classHrs + training + travel + rest;
-            hourPill.textContent = `${total} / 24 Hours Allocated`;
-
-            if (total > 24) {
-                hourPill.className = 'px-3.5 py-1 rounded-full text-xs font-semibold bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800';
-            } else {
-                hourPill.className = 'px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800';
-            }
-
-            // Diagnostic Calculation
-            if (sleep < 6 || (training + classHrs) > 14) {
-                riskBadge.textContent = 'High Burnout Risk';
-                riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-700';
-                riskDesc.textContent = 'Insufficient recovery window. Prolonged high output with low sleep drastically impairs focus and performance.';
-            } else if (sleep >= 7 && rest >= 3) {
-                riskBadge.textContent = 'Optimum Balance';
-                riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700';
-                riskDesc.textContent = 'Your schedule allows ample physical recovery and sustainable daily focus.';
-            } else {
-                riskBadge.textContent = 'Moderate Strain';
-                riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700';
-                riskDesc.textContent = 'Fair balance, but consider allocating slightly more downtime to prevent physical fatigue over time.';
-            }
-
-            // Update Chart
             timeChart.data.datasets[0].data = [sleep, classHrs, training, travel, rest];
             timeChart.update();
         }
 
         Object.keys(inputs).forEach(key => {
-            inputs[key].addEventListener('input', () => {
-                updateCalculator();
-            });
+            inputs[key].addEventListener('input', updateCalculator);
             inputs[key].addEventListener('change', () => {
                 trackEvent('calculator_adjust', {
-                    event_category: 'Interactive Tool',
+                    event_category: 'Widget Diagnostic',
                     event_label: key,
                     value: parseInt(inputs[key].value)
                 });
             });
         });
 
-        // --- 6. WIDGET 2: SKILL TRANSFER MATRIX TABS ---
+        // 5. Widget 2: Skill Matrix Tabs Tracking
         const skillData = {
             discipline: {
                 title: "🎯 Tactical Discipline",
-                desc: "Repeated physical drills on court train the brain to build habit routines easily in professional projects and skill development.",
+                desc: "Repeated physical drills on court train the brain to build habit routines easily in professional projects.",
                 benefits: ["Structured routine building", "Punctuality and consistency", "High tolerance for repetitive effort"]
             },
             teamwork: {
                 title: "🤝 Team Synergy",
-                desc: "Doubles play and team athletics foster rapid non-verbal communication, mutual accountability, and goal alignment.",
+                desc: "Doubles play and team athletics foster rapid non-verbal communication and goal alignment.",
                 benefits: ["Effective group project leadership", "Clear team communication", "Conflict resolution abilities"]
             },
             perseverance: {
                 title: "🔥 Pressure Resilience",
-                desc: "Facing match points under pressure builds cognitive adaptability, preventing panic during intense work or life deadlines.",
+                desc: "Facing match points under pressure builds cognitive adaptability during intense work deadlines.",
                 benefits: ["Composure during tight deadlines", "Constructive reaction to setbacks", "Continuous performance feedback loop"]
             }
         };
@@ -794,7 +644,6 @@
                 </div>
             `;
         }
-
         renderSkill('discipline');
 
         skillTabs.forEach(tab => {
@@ -808,13 +657,13 @@
                 renderSkill(skillKey);
 
                 trackEvent('select_skill_tab', {
-                    event_category: 'Interactive Tool',
+                    event_category: 'Widget Skill Matrix',
                     event_label: skillKey
                 });
             });
         });
 
-        // --- 7. WIDGET 3: SELF-ASSESSMENT QUIZ LOGIC ---
+        // 6. Widget 3: Assessment Quiz Tracking
         let quizAnswers = { 1: null, 2: null, 3: null };
 
         document.querySelectorAll('.quiz-btn').forEach(btn => {
@@ -823,7 +672,6 @@
                 const score = parseInt(this.dataset.score);
                 quizAnswers[qNum] = score;
 
-                // Highlight selected in question group
                 const parent = this.parentElement;
                 parent.querySelectorAll('.quiz-btn').forEach(b => {
                     b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
@@ -833,29 +681,18 @@
                 this.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
 
                 trackEvent('quiz_answer', {
-                    event_category: 'Quiz',
+                    event_category: 'Widget Assessment Quiz',
                     event_label: `question_${qNum}`,
                     value: score
                 });
 
-                // Check if all answered
                 if (quizAnswers[1] && quizAnswers[2] && quizAnswers[3]) {
                     const totalScore = quizAnswers[1] + quizAnswers[2] + quizAnswers[3];
                     document.getElementById('quiz-score-val').textContent = totalScore;
-                    const resultText = document.getElementById('quiz-score-text');
-
-                    if (totalScore >= 8) {
-                        resultText.textContent = "Excellent balance! You maintain healthy recovery habits and strategic daily scheduling.";
-                    } else if (totalScore >= 5) {
-                        resultText.textContent = "Good foundation. Focusing slightly more on structured recovery will boost your performance stability.";
-                    } else {
-                        resultText.textContent = "High stress indication. Consider recalibrating your workload and prioritizing sleep windows.";
-                    }
-
                     document.getElementById('quiz-result').classList.remove('hidden');
 
                     trackEvent('quiz_complete', {
-                        event_category: 'Quiz',
+                        event_category: 'Widget Assessment Quiz',
                         event_label: 'score',
                         value: totalScore
                     });
@@ -872,42 +709,27 @@
             document.getElementById('quiz-result').classList.add('hidden');
 
             trackEvent('quiz_reset', {
-                event_category: 'Quiz',
+                event_category: 'Widget Assessment Quiz',
                 event_label: 'reset'
             });
         });
 
-        // --- 8. WIDGET 4: REFLECTION PAD LOCAL STORAGE ---
-        const goalTextarea = document.getElementById('goal-textarea');
-        const saveStatus = document.getElementById('save-status');
-
-        const savedGoals = localStorage.getItem('peak_goals');
-        if (savedGoals) {
-            goalTextarea.value = savedGoals;
-        }
-
-        goalTextarea.addEventListener('input', () => {
-            localStorage.setItem('peak_goals', goalTextarea.value);
-            saveStatus.textContent = 'Saving...';
-            setTimeout(() => {
-                saveStatus.textContent = 'Saved locally';
-            }, 500);
-        });
-
+        // 7. Widget 4: Reflection Pad Tracking
         document.getElementById('btn-copy-goals').addEventListener('click', () => {
-            if (goalTextarea.value.trim() !== '') {
-                navigator.clipboard.writeText(goalTextarea.value);
+            const goalText = document.getElementById('goal-textarea').value;
+            if (goalText.trim() !== '') {
+                navigator.clipboard.writeText(goalText);
                 alert('Goals copied to clipboard!');
                 
                 trackEvent('copy_goals', {
-                    event_category: 'Interactive Tool',
+                    event_category: 'Widget Goal Reflection',
                     event_label: 'goals_copied',
-                    value: goalTextarea.value.length
+                    value: goalText.length
                 });
             }
         });
 
-        // --- 9. FEEDBACK BUTTON TRACKING ---
+        // 8. Feedback Tracking
         document.getElementById('btn-feedback-yes').addEventListener('click', () => {
             document.getElementById('feedback-thanks').classList.remove('hidden');
             trackEvent('article_feedback', {

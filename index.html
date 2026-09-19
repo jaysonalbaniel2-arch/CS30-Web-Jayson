@@ -1,299 +1,947 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student-Athletes and Academic Life</title>
+    <title>Balancing the Court and the Classroom | Jayson Paul C. Albaniel</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#0a0f1d'
+                        },
+                        electric: '#00f2fe',
+                        accent: '#2563eb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f6f8;
-            color: #252a34;
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        header {
-            background-color: #172554;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
         }
 
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(14, 165, 233, 0.18);
+            box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.08);
         }
 
-        header p {
-            font-size: 18px;
-            margin: 5px;
+        /* Reading Progress Bar */
+        #progress-bar {
+            transition: width 0.1s ease-out;
         }
 
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+        /* Smooth Slider Customization */
+        input[type=range] {
+            accent-color: #0284c7;
         }
 
+        /* Scroll margin for sticky headers */
         section {
-            background: white;
-            margin-bottom: 25px;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            scroll-margin-top: 5rem;
         }
 
-        h2 {
-            color: #172554;
-            border-bottom: 2px solid #dbeafe;
-            padding-bottom: 10px;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        h3 {
-            color: #1e3a8a;
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
         }
-
-        ul, ol {
-            padding-left: 25px;
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-
-        .highlight {
-            background-color: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        footer {
-            background-color: #172554;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 30px;
-            }
-
-            section {
-                padding: 25px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C7585FYVWJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-C7585FYVWJ');
-</script>
 </head>
 
-<body>
+<body class="bg-navy-950 text-slate-100 light:bg-slate-50 light:text-slate-800 transition-colors duration-300 min-h-screen flex flex-col selection:bg-ocean-500 selection:text-white">
 
-<header>
-    <h1>Balancing the Court and the Classroom</h1>
-    <p>The Impact of Student-Athlete Responsibilities on Academic Life</p>
-    <p><strong>Author:</strong> Jayson Paul C. Albaniel</p>
-</header>
+    <!-- READING PROGRESS BAR -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-slate-800/40">
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-ocean-500 via-accent to-electric w-0 shadow-sm shadow-ocean-400"></div>
+    </div>
 
-<main>
+    <!-- MAIN STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 w-full border-b border-ocean-900/50 light:border-slate-200 bg-navy-950/80 light:bg-white/80 backdrop-blur-md transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-ocean-700 via-ocean-500 to-electric text-white font-black text-xl shadow-lg shadow-ocean-500/20">
+                    🏀
+                </span>
+                <div>
+                    <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-ocean-300 via-ocean-400 to-electric text-sm sm:text-base">
+                        Court & Classroom
+                    </span>
+                    <span class="text-xs text-slate-400 light:text-slate-500 block hidden sm:block">By Jayson Paul C. Albaniel</span>
+                </div>
+            </div>
 
-    <section>
-        <h2>Abstract</h2>
+            <!-- Header Quick Nav Links & Theme Toggle -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <nav class="hidden md:flex items-center space-x-1 text-xs font-medium text-slate-300 light:text-slate-600">
+                    <a href="#abstract" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Abstract</a>
+                    <a href="#calculator" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Diagnostic Tool</a>
+                    <a href="#skills" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Skill Matrix</a>
+                    <a href="#quiz" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Quiz</a>
+                </nav>
 
-        <p>
-            Student-athletes have the unique responsibility of managing both
-            their academic requirements and athletic commitments. While sports
-            participation can provide valuable experiences such as discipline,
-            teamwork, and perseverance, it can also create challenges when
-            combined with academic responsibilities.
-        </p>
+                <div class="h-4 w-px bg-slate-800 light:bg-slate-200 hidden md:block"></div>
 
-        <p>
-            This paper explores the different ways athletic responsibilities
-            may influence the academic experiences and daily lives of student-
-            athletes. It focuses on time management, academic pressure,
-            personal development, and the challenges of maintaining balance
-            between school and sports.
-        </p>
-    </section>
-
-
-    <section>
-        <h2>Introduction</h2>
-
-        <p>
-            University life can already be demanding for students, but
-            student-athletes face an additional responsibility of maintaining
-            their commitment to their sport. Aside from attending classes and
-            completing academic requirements, they may also have regular
-            practices, competitions, team activities, and travel schedules.
-        </p>
-
-        <p>
-            Managing these responsibilities can be difficult, especially when
-            academic deadlines and athletic events happen at the same time.
-            However, being involved in sports can also help students develop
-            skills that are useful beyond athletics.
-        </p>
-
-        <div class="highlight">
-            <strong>Central Idea:</strong>
-            Student-athletes experience both challenges and benefits from
-            balancing their academic responsibilities with their athletic
-            commitments.
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-xl bg-slate-900 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-ocean-400 border border-slate-800 light:border-slate-200 transition-all focus:outline-none" aria-label="Toggle Theme">
+                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
         </div>
-    </section>
+    </header>
 
+    <!-- MAIN PAGE CONTAINER -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <section>
-        <h2>Why Student-Athletes Struggle to Balance Responsibilities</h2>
+        <!-- STICKY SIDEBAR TABLE OF CONTENTS (DESKTOP) -->
+        <aside class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24 space-y-4">
+                <div class="p-5 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600 mb-3 flex items-center gap-2">
+                        <span>📖</span> Article Navigation
+                    </h3>
+                    <nav class="space-y-1 text-xs">
+                        <a href="#hero" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">1. Title & Hero</a>
+                        <a href="#abstract" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">2. Abstract & Intro</a>
+                        <a href="#calculator" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">3. 24h Routine Diagnostic</a>
+                        <a href="#challenges" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">4. Why Athletes Struggle</a>
+                        <a href="#timemanagement" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">5. Time Management Tactics</a>
+                        <a href="#skills" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">6. Athletic Skill Matrix</a>
+                        <a href="#impact" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">7. Academic & Personal Impact</a>
+                        <a href="#quiz" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">8. Self-Assessment Quiz</a>
+                        <a href="#takeaways" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">9. Key Takeaways Checklist</a>
+                        <a href="#notepad" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">10. Goal Reflection Pad</a>
+                        <a href="#references" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">11. Conclusion & References</a>
+                    </nav>
+                </div>
 
-        <p>
-            One of the major challenges faced by student-athletes is the
-            limited amount of time available for academic work and personal
-            activities. Training sessions and competitions may occupy hours
-            that could otherwise be used for studying, completing assignments,
-            or resting.
-        </p>
+                <!-- Academic Info Tag -->
+                <div class="p-4 rounded-2xl bg-ocean-950/80 light:bg-sky-50 border border-ocean-800/60 light:border-sky-200 text-xs text-ocean-300 light:text-ocean-800 space-y-2">
+                    <div class="font-bold text-ocean-400 light:text-ocean-700 flex items-center gap-1.5">
+                        <span>🎓</span> Academic Publication
+                    </div>
+                    <p class="text-slate-400 light:text-slate-600 leading-relaxed">
+                        CS30 - Websites and Online Communication Interactive Showcase.
+                    </p>
+                </div>
+            </div>
+        </aside>
 
-        <p>
-            Academic pressure can become more noticeable during examination
-            periods or when several requirements are due at the same time.
-            Athletes may need to adjust their schedules and prioritize tasks
-            in order to meet both academic and athletic expectations.
-        </p>
-    </section>
+        <!-- MAIN ARTICLE & INTERACTIVE CONTENT -->
+        <main class="lg:col-span-9 space-y-12">
 
+            <!-- HERO SECTION -->
+            <section id="hero" class="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-gradient-to-br from-navy-900 via-navy-950 to-slate-950 light:from-slate-100 light:via-sky-50 light:to-blue-50 border border-ocean-900/60 light:border-sky-200 shadow-2xl">
+                <div class="absolute -top-32 -right-32 w-96 h-96 bg-ocean-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <section>
-        <h2>Time Management</h2>
+                <div class="relative z-10 space-y-6 max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-ocean-500/10 border border-ocean-500/30 text-ocean-300 light:text-ocean-700 text-xs font-semibold uppercase tracking-wider">
+                        <span>CS30 Article Feature</span>
+                        <span>•</span>
+                        <span>Student-Athlete Research</span>
+                    </div>
 
-        <p>
-            Time management is an important skill for student-athletes.
-            Because their schedules often contain fixed training and
-            competition periods, they must make effective use of the remaining
-            time available to them.
-        </p>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white light:text-slate-900 leading-tight">
+                        Balancing the <span class="text-transparent bg-clip-text bg-gradient-to-r from-ocean-400 via-ocean-300 to-electric">Court</span> and the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-ocean-300">Classroom</span>
+                    </h1>
 
-        <p>
-            Creating schedules, prioritizing urgent requirements, and avoiding
-            unnecessary distractions can help student-athletes manage their
-            responsibilities more effectively.
-        </p>
-    </section>
+                    <p class="text-base sm:text-lg text-slate-300 light:text-slate-600 leading-relaxed font-normal">
+                        The Impact of Student-Athlete Responsibilities on Academic Life — An interactive examination of physical exertion, scholastic pressures, and actionable time management strategies.
+                    </p>
 
+                    <!-- METADATA CARDS -->
+                    <div class="pt-6 border-t border-slate-800/80 light:border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">AUTHOR</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">Jayson Paul C. Albaniel</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">COURSE</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">CS30 Web Comm</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">PUBLICATION</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">Academic Research</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">EST. READ TIME</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">7 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <section>
-        <h2>Benefits of Athletic Participation</h2>
+            <!-- ABSTRACT & INTRODUCTION -->
+            <section id="abstract" class="space-y-6">
+                <div class="p-6 sm:p-8 rounded-2xl glass-card border-l-4 border-l-ocean-500 space-y-3">
+                    <h2 class="text-xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                        <span>📜</span> Abstract
+                    </h2>
+                    <p class="text-slate-300 light:text-slate-700 text-sm sm:text-base leading-relaxed">
+                        Student-athletes face a continuous balancing act between academic expectations and athletic commitments. This paper examines how intense training schedules, game travel, and high performance pressures affect university coursework, mental health, and time management. It also highlights how athletic discipline, teamwork, and perseverance positively influence academic resilience and long-term personal success.
+                    </p>
+                </div>
 
-        <p>
-            Although being a student-athlete can be challenging, participation
-            in sports can contribute positively to personal development.
-            Athletic experiences can teach students how to work toward goals,
-            cooperate with teammates, and remain committed despite setbacks.
-        </p>
+                <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                    <h3 class="text-2xl font-bold text-white light:text-slate-900 pt-2">1. Introduction</h3>
+                    <p>
+                        Entering college marks a major milestone for students, introducing greater academic independence and heightened performance expectations. For student-athletes, this transition carries a dual burden: achieving academic excellence while meeting strict physical and competitive expectations from coaches, teammates, and athletic programs.
+                    </p>
+                    <p>
+                        While athletics offers undeniable benefits—such as physical health, leadership training, and university pride—it also introduces severe time constraints. The challenge lies in harmonizing hours spent on the court with rigorous hours required in the classroom.
+                    </p>
+                </div>
+            </section>
 
-        <h3>Discipline</h3>
-        <p>
-            Regular training requires consistency and commitment. These habits
-            may also help students approach their academic responsibilities
-            with greater discipline.
-        </p>
+            <!-- WIDGET 1: 24-HOUR ROUTINE CALCULATOR -->
+            <section id="calculator" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 01</div>
+                        <h2 class="text-2xl font-bold text-white light:text-slate-900">24-Hour Routine & Burnout Calculator</h2>
+                    </div>
+                    <div id="hour-pill" class="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 self-start sm:self-auto">
+                        24 / 24 Hours Allocated
+                    </div>
+                </div>
+                <p class="text-sm text-slate-400 light:text-slate-600">
+                    Adjust the daily sliders to model a student-athlete's routine. See real-time time allocation on the chart and get an instant Burnout Risk Diagnostic.
+                </p>
 
-        <h3>Teamwork</h3>
-        <p>
-            Sports teach students how to communicate, cooperate, and work with
-            other people toward a common goal. These skills can also be useful
-            in academic group activities and future professional environments.
-        </p>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+                    <!-- Sliders Column -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <!-- Sleep Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">😴 Sleep & Physical Recovery</span>
+                                <span id="val-sleep" class="text-ocean-400 font-mono font-bold">7 hrs</span>
+                            </div>
+                            <input type="range" id="input-sleep" min="2" max="12" value="7" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
 
-        <h3>Perseverance</h3>
-        <p>
-            Athletes regularly encounter difficult training sessions,
-            competitions, and setbacks. Learning to continue working despite
-            challenges can help students develop perseverance in other areas
-            of life.
-        </p>
-    </section>
+                        <!-- Class & Academics Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">📚 Classes, Study & Homework</span>
+                                <span id="val-class" class="text-ocean-400 font-mono font-bold">6 hrs</span>
+                            </div>
+                            <input type="range" id="input-class" min="1" max="12" value="6" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
 
+                        <!-- Athletic Practice Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🏀 Sports Practice, Gym & Film</span>
+                                <span id="val-training" class="text-ocean-400 font-mono font-bold">5 hrs</span>
+                            </div>
+                            <input type="range" id="input-training" min="1" max="12" value="5" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
 
-    <section>
-        <h2>Academic and Personal Impact</h2>
+                        <!-- Travel & Commute Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🚌 Travel & Commuting</span>
+                                <span id="val-travel" class="text-ocean-400 font-mono font-bold">2 hrs</span>
+                            </div>
+                            <input type="range" id="input-travel" min="0" max="8" value="2" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
 
-        <p>
-            The effects of being a student-athlete can extend beyond academic
-            performance. Athletic commitments may influence how students spend
-            their free time, interact with friends and family, and manage
-            their physical and mental energy throughout the week.
-        </p>
+                        <!-- Personal / Rest Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🎮 Meals, Social & Downtime</span>
+                                <span id="val-rest" class="text-ocean-400 font-mono font-bold">4 hrs</span>
+                            </div>
+                            <input type="range" id="input-rest" min="0" max="10" value="4" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
 
-        <p>
-            At the same time, the experience may help students become more
-            organized and responsible. Learning to balance multiple
-            responsibilities can prepare them for situations in which they
-            must manage competing priorities.
-        </p>
-    </section>
+                    <!-- Donut Chart & Diagnostic Display -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-navy-900/80 light:bg-slate-100 border border-ocean-900/50 light:border-slate-200 text-center">
+                        <div class="relative w-44 h-44">
+                            <canvas id="timeChart" width="176" height="176"></canvas>
+                        </div>
 
+                        <div class="mt-4 space-y-2 w-full">
+                            <div class="text-xs text-slate-400 light:text-slate-500 font-semibold uppercase tracking-wider">Burnout Diagnostic</div>
+                            <div id="risk-badge" class="inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                Balanced Schedule
+                            </div>
+                            <p id="risk-desc" class="text-xs text-slate-300 light:text-slate-600 px-2 leading-relaxed">
+                                Adequate sleep and balanced practice time allow for steady academic performance without physical exhaustion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <section>
-        <h2>Key Points</h2>
+            <!-- WHY STUDENT-ATHLETES STRUGGLE -->
+            <section id="challenges" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">02.</span> Why Student-Athletes Struggle
+                </h2>
 
-        <ol>
-            <li>Student-athletes must manage academic and athletic responsibilities simultaneously.</li>
-            <li>Training and competitions can reduce the time available for studying and personal activities.</li>
-            <li>Time management is essential for maintaining academic responsibilities.</li>
-            <li>Sports can develop discipline, teamwork, and perseverance.</li>
-            <li>A healthy balance between academics and athletics can contribute to personal growth.</li>
-        </ol>
-    </section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-ocean-400 flex items-center justify-center text-xl font-bold">⏰</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Physical & Mental Fatigue</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Early morning training coupled with high-intensity drills leaves student-athletes physically depleted during lectures. Brain fatigue directly impairs cognitive retention and active classroom participation.
+                        </p>
+                    </div>
 
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold">✈️</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Travel & Missed Lectures</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Road games and tournament travel force athletes to miss lectures and group project sessions, creating an ongoing backlog of coursework that must be caught up on during transit.
+                        </p>
+                    </div>
 
-    <section>
-        <h2>Conclusion</h2>
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl font-bold">📈</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Dual Pressure & Expectation</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Coaches demand victory and peak physical performance, while academic institutions strictly enforce Grade Point Average (GPA) eligibility standards to remain on the team roster.
+                        </p>
+                    </div>
 
-        <p>
-            Being a student-athlete presents a unique university experience
-            that requires students to balance two demanding areas of their
-            lives. Academic requirements, training schedules, competitions,
-            and personal responsibilities can sometimes create significant
-            challenges.
-        </p>
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl font-bold">🛋️</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Limited Recovery Windows</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            When non-athlete students use weekends for relaxation or exam preparation, student-athletes are frequently engaged in full-day tournament matches and post-game recovery.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-        <p>
-            Despite these difficulties, athletic participation can provide
-            valuable lessons in discipline, teamwork, time management, and
-            perseverance. Ultimately, the experience of being a student-athlete
-            can help students develop skills that extend beyond the classroom
-            and the playing field.
-        </p>
-    </section>
+            <!-- TIME MANAGEMENT STRATEGIES -->
+            <section id="timemanagement" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">03.</span> Essential Time Management Tactics
+                </h2>
 
+                <div class="p-6 sm:p-8 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-4">
+                    <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                        To navigate these demands, successful student-athletes rely on structured scheduling strategies rather than spontaneous study habits.
+                    </p>
 
-    <section>
-        <h2>References</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 1</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Proactive Scheduling</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Mapping out exam dates, project deadlines, and travel schedules weeks in advance.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 2</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Micro-Study Windows</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Utilizing 20-minute windows between practice and classes for flashcard review.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 3</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Early Faculty Contact</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Communicating travel dates with professors during the first week of class.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <p>
-            This webpage presents a student research discussion on the
-            relationship between athletic responsibilities and university
-            academic life.
-        </p>
-    </section>
+            <!-- WIDGET 2: ATHLETIC SKILL MATRIX EXPLORER -->
+            <section id="skills" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 02</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Athletic Skill Transfer Matrix</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Select a core athletic virtue to explore how court habits translate into classroom excellence.
+                    </p>
+                </div>
 
-</main>
+                <!-- Skill Tabs -->
+                <div class="flex flex-wrap gap-2 border-b border-slate-800 light:border-slate-200 pb-4">
+                    <button class="skill-tab active-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-ocean-600 text-white shadow-md shadow-ocean-600/30" data-skill="discipline">
+                        🎯 Discipline & Routine
+                    </button>
+                    <button class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-navy-900 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-800" data-skill="teamwork">
+                        🤝 Teamwork & Collaboration
+                    </button>
+                    <button class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-navy-900 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-800" data-skill="perseverance">
+                        🔥 Resilience & Perseverance
+                    </button>
+                </div>
 
-<footer>
-    <p>CS30 - Websites and Online Communication</p>
-    <p>© 2026 Jayson Paul C. Albaniel</p>
-</footer>
+                <!-- Active Skill Display Box -->
+                <div id="skill-display" class="p-6 rounded-2xl bg-navy-900/80 light:bg-slate-100 border border-ocean-900/50 light:border-slate-200 space-y-4">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
 
+            <!-- ACADEMIC & PERSONAL IMPACT -->
+            <section id="impact" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">04.</span> Academic & Long-Term Personal Impact
+                </h2>
+
+                <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                    Despite the severe demands, research shows that participating in organized collegiate sports equips individuals with lifelong competitive advantages. The heightened discipline required to balance sports and study produces professionals who excel under high-stress corporate and academic environments.
+                </p>
+
+                <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3">
+                    <blockquote class="italic text-slate-300 light:text-slate-700 text-sm border-l-2 border-ocean-400 pl-4 py-1">
+                        "The court teaches resilience that no textbook can replicate. When you learn to execute playbooks under fatigue, writing a term paper under deadline becomes second nature."
+                    </blockquote>
+                    <p class="text-xs text-slate-400 light:text-slate-500 font-semibold text-right">— Jayson Paul C. Albaniel</p>
+                </div>
+            </section>
+
+            <!-- WIDGET 3: SELF-ASSESSMENT QUIZ -->
+            <section id="quiz" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 03</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Student-Athlete Time Diagnostic Quiz</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Evaluate your academic & athletic management habits with 4 quick questions.
+                    </p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6">
+                    <div id="quiz-card" class="space-y-4">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-800 light:border-slate-200">
+                        <span id="quiz-step" class="text-xs text-slate-400 font-mono">Question 1 of 4</span>
+                        <button id="quiz-next-btn" disabled class="px-5 py-2.5 rounded-xl bg-ocean-600 text-white font-medium text-xs disabled:opacity-40 disabled:cursor-not-allowed hover:bg-ocean-500 transition-all shadow-md shadow-ocean-600/30">
+                            Next Question →
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WIDGET 4: KEY TAKEAWAYS CHECKLIST -->
+            <section id="takeaways" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 04</div>
+                        <h2 class="text-2xl font-bold text-white light:text-slate-900">Key Points & Habit Tracker</h2>
+                    </div>
+                    <span id="checklist-progress" class="text-xs font-bold px-3 py-1 rounded-full bg-ocean-500/10 text-ocean-400 border border-ocean-500/20">
+                        0 / 5 Completed
+                    </span>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="checklist-item flex items-start space-x-3 p-4 rounded-xl bg-navy-900/50 light:bg-slate-100/80 border border-slate-800 light:border-slate-200 cursor-pointer hover:border-ocean-500/40 transition-all">
+                        <input type="checkbox" class="mt-1 rounded text-ocean-600 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700">
+                        <span class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            <strong>Communicate Early with Faculty:</strong> Provide professors with athletic schedule letters during the first week of class.
+                        </span>
+                    </label>
+
+                    <label class="checklist-item flex items-start space-x-3 p-4 rounded-xl bg-navy-900/50 light:bg-slate-100/80 border border-slate-800 light:border-slate-200 cursor-pointer hover:border-ocean-500/40 transition-all">
+                        <input type="checkbox" class="mt-1 rounded text-ocean-600 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700">
+                        <span class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            <strong>Leverage Micro Study Sessions:</strong> Utilize 15 to 30-minute travel or practice gaps for reading and flashcard review.
+                        </span>
+                    </label>
+
+                    <label class="checklist-item flex items-start space-x-3 p-4 rounded-xl bg-navy-900/50 light:bg-slate-100/80 border border-slate-800 light:border-slate-200 cursor-pointer hover:border-ocean-500/40 transition-all">
+                        <input type="checkbox" class="mt-1 rounded text-ocean-600 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700">
+                        <span class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            <strong>Protect 7+ Hours of Sleep:</strong> Treat rest and recovery as non-negotiable performance training components.
+                        </span>
+                    </label>
+
+                    <label class="checklist-item flex items-start space-x-3 p-4 rounded-xl bg-navy-900/50 light:bg-slate-100/80 border border-slate-800 light:border-slate-200 cursor-pointer hover:border-ocean-500/40 transition-all">
+                        <input type="checkbox" class="mt-1 rounded text-ocean-600 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700">
+                        <span class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            <strong>Form Peer Study Teams:</strong> Partner with teammates to maintain academic accountability on road trips.
+                        </span>
+                    </label>
+
+                    <label class="checklist-item flex items-start space-x-3 p-4 rounded-xl bg-navy-900/50 light:bg-slate-100/80 border border-slate-800 light:border-slate-200 cursor-pointer hover:border-ocean-500/40 transition-all">
+                        <input type="checkbox" class="mt-1 rounded text-ocean-600 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700">
+                        <span class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            <strong>Apply Court Discipline to Academics:</strong> Treat assignment deadlines with the same urgency as game-winning plays.
+                        </span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- WIDGET 5: REFLECTION NOTEPAD -->
+            <section id="notepad" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 05</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Student Goal Reflection Pad</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Record your personal study & sports goals. Notes are saved automatically to your browser session.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <textarea id="reflection-input" rows="5" placeholder="Write down your time management goals or key takeaways..." class="w-full p-4 rounded-2xl bg-navy-900 light:bg-slate-100 text-slate-100 light:text-slate-800 border border-slate-800 light:border-slate-300 focus:border-ocean-500 focus:outline-none text-xs sm:text-sm resize-none"></textarea>
+                    
+                    <div class="flex flex-wrap justify-between items-center gap-3">
+                        <span id="save-status" class="text-xs text-slate-500">Auto-saved to Local Storage</span>
+                        <div class="flex space-x-2">
+                            <button id="download-notes-btn" class="px-4 py-2 rounded-xl bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-xs font-semibold text-slate-200 light:text-slate-800 transition-colors">
+                                💾 Export Notes (.txt)
+                            </button>
+                            <button id="clear-notes-btn" class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-xs font-semibold text-red-400 transition-colors">
+                                🗑️ Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCLUSION & REFERENCES -->
+            <section id="references" class="space-y-6">
+                <div class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-4">
+                    <h2 class="text-xl font-bold text-white light:text-slate-900">5. Conclusion</h2>
+                    <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                        Balancing the court and the classroom is undeniably demanding, yet it provides one of the most comprehensive personal development environments in higher education. With intentional time management, faculty communication, and self-care, student-athletes transform physical and academic strain into lifelong resilience.
+                    </p>
+
+                    <div class="pt-4 border-t border-slate-800 light:border-slate-200 space-y-2">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Academic References</h3>
+                        <ul class="text-xs text-slate-400 light:text-slate-600 space-y-1 list-disc pl-4">
+                            <li>Albaniel, J. P. C. (2026). <em>Balancing the Court and the Classroom: The Impact of Student-Athlete Responsibilities on Academic Life</em>. CS30 Research Project.</li>
+                            <li>NCAA Academic Performance Studies & Student-Athlete Health Guidelines.</li>
+                            <li>Journal of College Student Development: <em>Time Allocation and Academic Retention among Collegiate Athletes</em>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="pt-8 border-t border-slate-800 light:border-slate-200 text-center space-y-2 text-xs text-slate-500">
+                <p>Designed for CS30 - Websites and Online Communication</p>
+                <p>© 2026 Jayson Paul C. Albaniel. All Rights Reserved.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Theme Switcher ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const htmlEl = document.documentElement;
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (htmlEl.classList.contains('dark')) {
+                    htmlEl.classList.remove('dark');
+                    htmlEl.classList.add('light');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                } else {
+                    htmlEl.classList.remove('light');
+                    htmlEl.classList.add('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                }
+                drawChart();
+            });
+
+            // --- Reading Progress Indicator ---
+            window.addEventListener('scroll', () => {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / totalHeight) * 100;
+                document.getElementById('progress-bar').style.width = `${Math.min(100, Math.max(0, progress))}%`;
+            });
+
+            // --- Widget 1: 24h Routine Calculator & Donut Chart ---
+            const sliders = {
+                sleep: document.getElementById('input-sleep'),
+                class: document.getElementById('input-class'),
+                training: document.getElementById('input-training'),
+                travel: document.getElementById('input-travel'),
+                rest: document.getElementById('input-rest')
+            };
+
+            const labels = {
+                sleep: document.getElementById('val-sleep'),
+                class: document.getElementById('val-class'),
+                training: document.getElementById('val-training'),
+                travel: document.getElementById('val-travel'),
+                rest: document.getElementById('val-rest')
+            };
+
+            const canvas = document.getElementById('timeChart');
+            const ctx = canvas.getContext('2d');
+
+            function getValues() {
+                return {
+                    sleep: parseInt(sliders.sleep.value),
+                    classHrs: parseInt(sliders.class.value),
+                    training: parseInt(sliders.training.value),
+                    travel: parseInt(sliders.travel.value),
+                    rest: parseInt(sliders.rest.value)
+                };
+            }
+
+            function updateCalculatorUI() {
+                const vals = getValues();
+                labels.sleep.textContent = `${vals.sleep} hrs`;
+                labels.class.textContent = `${vals.classHrs} hrs`;
+                labels.training.textContent = `${vals.training} hrs`;
+                labels.travel.textContent = `${vals.travel} hrs`;
+                labels.rest.textContent = `${vals.rest} hrs`;
+
+                const total = vals.sleep + vals.classHrs + vals.training + vals.travel + vals.rest;
+                const hourPill = document.getElementById('hour-pill');
+                hourPill.textContent = `${total} / 24 Hours Allocated`;
+
+                if (total > 24) {
+                    hourPill.className = 'px-3.5 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20';
+                } else if (total === 24) {
+                    hourPill.className = 'px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+                } else {
+                    hourPill.className = 'px-3.5 py-1 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20';
+                }
+
+                const riskBadge = document.getElementById('risk-badge');
+                const riskDesc = document.getElementById('risk-desc');
+
+                if (vals.sleep < 6 || total > 24 || (vals.training + vals.classHrs > 13)) {
+                    riskBadge.textContent = '🚨 High Burnout Risk';
+                    riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-red-500/20 text-red-400 border border-red-500/30';
+                    riskDesc.textContent = 'Alert: High workload combined with less than 6 hours of sleep impairs athletic reaction time and cognitive retention.';
+                } else if (vals.sleep >= 7 && vals.classHrs >= 5 && total === 24) {
+                    riskBadge.textContent = '🌟 Balanced Routine';
+                    riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                    riskDesc.textContent = 'Optimal schedule! Sufficient rest and steady study windows ensure high physical and academic performance.';
+                } else {
+                    riskBadge.textContent = '⚠️ Moderate Strain';
+                    riskBadge.className = 'inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-500/30';
+                    riskDesc.textContent = 'Manageable routine, but monitor travel fatigue during heavy game weeks.';
+                }
+
+                drawChart();
+            }
+
+            function drawChart() {
+                const vals = getValues();
+                const total = vals.sleep + vals.classHrs + vals.training + vals.travel + vals.rest;
+
+                const data = [
+                    { val: vals.sleep, color: '#0284c7' },    // Ocean Blue
+                    { val: vals.classHrs, color: '#2563eb' }, // Accent Blue
+                    { val: vals.training, color: '#00f2fe' }, // Electric Cyan
+                    { val: vals.travel, color: '#f59e0b' },   // Amber
+                    { val: vals.rest, color: '#10b981' }      // Emerald
+                ];
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let startAngle = -0.5 * Math.PI;
+
+                data.forEach(item => {
+                    const sliceAngle = (item.val / Math.max(total, 1)) * 2 * Math.PI;
+                    ctx.beginPath();
+                    ctx.arc(88, 88, 70, startAngle, startAngle + sliceAngle);
+                    ctx.lineTo(88, 88);
+                    ctx.fillStyle = item.color;
+                    ctx.fill();
+                    startAngle += sliceAngle;
+                });
+
+                // Donut Cutout
+                ctx.beginPath();
+                ctx.arc(88, 88, 48, 0, 2 * Math.PI);
+                const isDark = htmlEl.classList.contains('dark');
+                ctx.fillStyle = isDark ? '#0f172a' : '#f1f5f9';
+                ctx.fill();
+
+                // Text Overlay
+                ctx.fillStyle = isDark ? '#f8fafc' : '#0f172a';
+                ctx.font = 'bold 13px Inter';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(`${total} Hours`, 88, 88);
+            }
+
+            Object.values(sliders).forEach(slider => {
+                slider.addEventListener('input', updateCalculatorUI);
+            });
+
+            updateCalculatorUI();
+
+            // --- Widget 2: Skill Matrix Explorer ---
+            const skillData = {
+                discipline: {
+                    title: "🎯 Discipline & Consistency",
+                    desc: "Waking up early for conditioning builds internal focus that translates directly into exam preparation and structured assignment execution.",
+                    tip: "Action Tip: Apply the 15-minute post-practice rule—review lecture notes immediately after recovery."
+                },
+                teamwork: {
+                    title: "🤝 Teamwork & Strategic Collaboration",
+                    desc: "Athletes understand role division and group goals, making them effective leaders and project partners in group coursework.",
+                    tip: "Action Tip: Assign explicit team roles early in group projects just as coaches assign positions on the court."
+                },
+                perseverance: {
+                    title: "🔥 Resilience & Overcoming Setbacks",
+                    desc: "Facing tough athletic losses teaches emotional composure and resilience when receiving challenging academic feedback.",
+                    tip: "Action Tip: Treat low assignment scores like game film review—analyze errors objectively without frustration."
+                }
+            };
+
+            const skillTabs = document.querySelectorAll('.skill-tab');
+            const skillDisplay = document.getElementById('skill-display');
+
+            function renderSkill(skillKey) {
+                const data = skillData[skillKey];
+                skillDisplay.innerHTML = `
+                    <h3 class="text-base font-bold text-white light:text-slate-900">${data.title}</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 light:text-slate-600 leading-relaxed">${data.desc}</p>
+                    <div class="p-3 rounded-xl bg-ocean-500/10 border border-ocean-500/20 text-xs text-ocean-400 light:text-ocean-700 font-medium">
+                        💡 ${data.tip}
+                    </div>
+                `;
+            }
+
+            skillTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    skillTabs.forEach(t => {
+                        t.classList.remove('bg-ocean-600', 'text-white', 'shadow-md');
+                        t.classList.add('bg-navy-900', 'light:bg-slate-200', 'text-slate-300', 'light:text-slate-700');
+                    });
+                    tab.classList.remove('bg-navy-900', 'light:bg-slate-200', 'text-slate-300', 'light:text-slate-700');
+                    tab.classList.add('bg-ocean-600', 'text-white', 'shadow-md');
+                    renderSkill(tab.dataset.skill);
+                });
+            });
+
+            renderSkill('discipline');
+
+            // --- Widget 3: Time Management Diagnostic Quiz ---
+            const questions = [
+                {
+                    q: "How do you handle assignment deadlines during road game travel weeks?",
+                    options: [
+                        "Complete and submit assignments 48 hours prior to departure",
+                        "Work on assignments late at night on the team bus",
+                        "Request extensions after missing the deadline"
+                    ],
+                    best: 0
+                },
+                {
+                    q: "When do you inform your academic instructors about team travel schedules?",
+                    options: [
+                        "During the first week of the semester",
+                        "A day before traveling",
+                        "Only if I miss an exam"
+                    ],
+                    best: 0
+                },
+                {
+                    q: "How many hours of nightly sleep do you target during competition season?",
+                    options: [
+                        "Less than 5 hours",
+                        "7 to 8 hours consistently",
+                        "Irregular (3 hours one night, 10 hours next)"
+                    ],
+                    best: 1
+                },
+                {
+                    q: "How do you utilize 30-minute breaks between practice sessions and lectures?",
+                    options: [
+                        "Mindless social media scrolling",
+                        "Reviewing flashcards or reading assigned chapters",
+                        "Unplanned naps"
+                    ],
+                    best: 1
+                }
+            ];
+
+            let currentQ = 0;
+            let quizScore = 0;
+            let selectedOpt = null;
+
+            const quizCard = document.getElementById('quiz-card');
+            const quizStep = document.getElementById('quiz-step');
+            const quizNextBtn = document.getElementById('quiz-next-btn');
+
+            function renderQuiz() {
+                if (currentQ >= questions.length) {
+                    quizCard.innerHTML = `
+                        <div class="text-center py-6 space-y-3">
+                            <div class="text-3xl">🏆</div>
+                            <h3 class="text-lg font-bold text-white light:text-slate-900">Assessment Complete</h3>
+                            <p class="text-xs text-slate-300 light:text-slate-600">
+                                You scored <strong>${quizScore} / ${questions.length}</strong> on high-performance academic habits.
+                            </p>
+                            <p class="text-xs text-ocean-400 bg-ocean-500/10 p-3 rounded-xl border border-ocean-500/20 max-w-md mx-auto">
+                                ${quizScore >= 3 ? "Excellent! You demonstrate proactive time management skills." : "Good effort! Try adopting early professor communication and structured rest cycles."}
+                            </p>
+                            <button onclick="resetQuiz()" class="mt-2 px-4 py-2 rounded-xl bg-slate-800 text-xs font-semibold text-slate-200 hover:bg-slate-700">
+                                🔄 Retake Quiz
+                            </button>
+                        </div>
+                    `;
+                    quizStep.textContent = "Complete";
+                    quizNextBtn.classList.add('hidden');
+                    return;
+                }
+
+                const qData = questions[currentQ];
+                quizStep.textContent = `Question ${currentQ + 1} of ${questions.length}`;
+                quizNextBtn.disabled = true;
+
+                quizCard.innerHTML = `
+                    <h3 class="text-sm sm:text-base font-semibold text-white light:text-slate-900">${qData.q}</h3>
+                    <div class="space-y-2">
+                        ${qData.options.map((opt, idx) => `
+                            <button onclick="selectQuizOption(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs sm:text-sm text-slate-300 light:text-slate-700 hover:border-ocean-500/50 transition-all">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            window.selectQuizOption = function(index) {
+                selectedOpt = index;
+                const btns = quizCard.querySelectorAll('.quiz-opt-btn');
+                btns.forEach((btn, i) => {
+                    if (i === index) {
+                        btn.className = 'quiz-opt-btn w-full text-left p-3 rounded-xl bg-ocean-500/20 border-2 border-ocean-500 text-xs sm:text-sm font-medium text-ocean-300';
+                    } else {
+                        btn.className = 'quiz-opt-btn w-full text-left p-3 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs sm:text-sm text-slate-300 light:text-slate-700 opacity-60';
+                    }
+                });
+                quizNextBtn.disabled = false;
+            };
+
+            quizNextBtn.addEventListener('click', () => {
+                if (selectedOpt === questions[currentQ].best) {
+                    quizScore++;
+                }
+                currentQ++;
+                selectedOpt = null;
+                renderQuiz();
+            });
+
+            window.resetQuiz = function() {
+                currentQ = 0;
+                quizScore = 0;
+                selectedOpt = null;
+                quizNextBtn.classList.remove('hidden');
+                renderQuiz();
+            };
+
+            renderQuiz();
+
+            // --- Widget 4: Checklist ---
+            const checkboxes = document.querySelectorAll('.checklist-item input');
+            const checklistProgress = document.getElementById('checklist-progress');
+
+            function updateChecklist() {
+                const checkedCount = document.querySelectorAll('.checklist-item input:checked').length;
+                checklistProgress.textContent = `${checkedCount} / ${checkboxes.length} Completed`;
+                if (checkedCount === checkboxes.length) {
+                    checklistProgress.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                } else {
+                    checklistProgress.className = 'text-xs font-bold px-3 py-1 rounded-full bg-ocean-500/10 text-ocean-400 border border-ocean-500/20';
+                }
+            }
+
+            checkboxes.forEach(cb => cb.addEventListener('change', updateChecklist));
+
+            // --- Widget 5: Reflection Notepad ---
+            const noteInput = document.getElementById('reflection-input');
+            const saveStatus = document.getElementById('save-status');
+            const downloadBtn = document.getElementById('download-notes-btn');
+            const clearBtn = document.getElementById('clear-notes-btn');
+
+            const savedNote = localStorage.getItem('athlete_reflection_notes');
+            if (savedNote) {
+                noteInput.value = savedNote;
+            }
+
+            noteInput.addEventListener('input', () => {
+                localStorage.setItem('athlete_reflection_notes', noteInput.value);
+                saveStatus.textContent = 'Auto-saved just now';
+                setTimeout(() => { saveStatus.textContent = 'Auto-saved to Local Storage'; }, 2000);
+            });
+
+            downloadBtn.addEventListener('click', () => {
+                const text = noteInput.value;
+                if (!text.trim()) {
+                    return;
+                }
+                const blob = new Blob([text], { type: 'text/plain' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'Athlete_Balancing_Goals.txt';
+                a.click();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                noteInput.value = '';
+                localStorage.removeItem('athlete_reflection_notes');
+                saveStatus.textContent = 'Notes cleared';
+            });
+        });
+    </script>
 </body>
 </html>

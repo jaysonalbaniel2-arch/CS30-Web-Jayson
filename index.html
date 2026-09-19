@@ -1,295 +1,862 @@
-<!-- ... existing code ... -->
-    <!-- Google Tag (gtag.js) -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balancing the Court and the Classroom | Jayson Paul C. Albaniel</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#0a0f1d'
+                        },
+                        electric: '#00f2fe',
+                        accent: '#2563eb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(14, 165, 233, 0.18);
+            box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.08);
+        }
+
+        /* Reading Progress Bar */
+        #progress-bar {
+            transition: width 0.1s ease-out;
+        }
+
+        /* Smooth Slider Customization */
+        input[type=range] {
+            accent-color: #0284c7;
+        }
+
+        /* Scroll margin for sticky headers */
+        section {
+            scroll-margin-top: 5rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NLPP45RS3"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        gtag('config', 'G-8NLPP45RS3');
+      gtag('config', 'G-8NLPP45RS3');
     </script>
 </head>
-<!-- ... existing code ... -->
-            <!-- Theme Toggle Button -->
-            <button id="themeToggle" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="Toggle Theme">
-                <i class="fas me-1 fa-moon dark:hidden"></i>
-                <i class="fas me-1 fa-sun hidden dark:inline"></i>
-                <span class="text-xs font-medium dark:text-slate-200">Theme</span>
-            </button>
+
+<body class="bg-navy-950 text-slate-100 light:bg-slate-50 light:text-slate-800 transition-colors duration-300 min-h-screen flex flex-col selection:bg-ocean-500 selection:text-white">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-slate-800/40">
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-ocean-500 via-accent to-electric w-0 shadow-sm shadow-ocean-400"></div>
+    </div>
+
+    <!-- MAIN STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 w-full border-b border-ocean-900/50 light:border-slate-200 bg-navy-950/80 light:bg-white/80 backdrop-blur-md transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-ocean-700 via-ocean-500 to-electric text-white font-black text-xl shadow-lg shadow-ocean-500/20">
+                    🏸
+                </span>
+                <div>
+                    <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-ocean-300 via-ocean-400 to-electric text-sm sm:text-base">
+                        Court & Classroom
+                    </span>
+                    <span class="text-xs text-slate-400 light:text-slate-500 block hidden sm:block">By Jayson Paul C. Albaniel</span>
+                </div>
+            </div>
+
+            <!-- Header Quick Nav Links & Theme Toggle -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <nav class="hidden md:flex items-center space-x-1 text-xs font-medium text-slate-300 light:text-slate-600">
+                    <a href="#abstract" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Abstract</a>
+                    <a href="#calculator" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Diagnostic Tool</a>
+                    <a href="#skills" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Skill Matrix</a>
+                    <a href="#quiz" class="px-3 py-1.5 rounded-lg hover:bg-ocean-900/50 light:hover:bg-slate-100 hover:text-ocean-400 transition-all">Quiz</a>
+                </nav>
+
+                <div class="h-4 w-px bg-slate-800 light:bg-slate-200 hidden md:block"></div>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-xl bg-slate-900 light:bg-slate-100 text-slate-300 light:text-slate-700 hover:text-ocean-400 border border-slate-800 light:border-slate-200 transition-all focus:outline-none" aria-label="Toggle Theme">
+                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- ... existing code ... -->
-                    <!-- Interactive 24-Hour Calculator -->
-                    <div class="my-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm backdrop-blur-md">
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">24-Hour Routine & Burnout Calculator</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Adjust your daily activity hours below to calculate your workload balance and burnout potential.</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                        <label for="range-training">Training & Practice</label>
-                                        <span id="val-training" class="text-indigo-600 dark:text-indigo-400 font-bold">4 hrs</span>
-                                    </div>
-                                    <input type="range" id="range-training" min="0" max="16" value="4" step="0.5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-600" oninput="updateCalculator('range-training')">
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                        <label for="range-work">Work & Academics</label>
-                                        <span id="val-work" class="text-indigo-600 dark:text-indigo-400 font-bold">8 hrs</span>
-                                    </div>
-                                    <input type="range" id="range-work" min="0" max="16" value="8" step="0.5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-600" oninput="updateCalculator('range-work')">
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                        <label for="range-sleep">Sleep & Recovery</label>
-                                        <span id="val-sleep" class="text-indigo-600 dark:text-indigo-400 font-bold">7 hrs</span>
-                                    </div>
-                                    <input type="range" id="range-sleep" min="0" max="16" value="7" step="0.5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-600" oninput="updateCalculator('range-sleep')">
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                        <label for="range-leisure">Leisure & Social</label>
-                                        <span id="val-leisure" class="text-indigo-600 dark:text-indigo-400 font-bold">5 hrs</span>
-                                    </div>
-                                    <input type="range" id="range-leisure" min="0" max="16" value="5" step="0.5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-600" oninput="updateCalculator('range-leisure')">
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-center items-center p-4 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200/80 dark:border-slate-800 text-center">
-                                <span class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Burnout Risk Index</span>
-                                <div id="burnout-score" class="text-3xl font-extrabold text-emerald-500 mb-1">Low (28%)</div>
-                                <p id="burnout-status" class="text-xs text-slate-500 dark:text-slate-400">Balanced load with optimal rest allocation.</p>
-                            </div>
-                        </div>
+    <!-- MAIN PAGE CONTAINER -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- STICKY SIDEBAR TABLE OF CONTENTS (DESKTOP) -->
+        <aside class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24 space-y-4">
+                <div class="p-5 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600 mb-3 flex items-center gap-2">
+                        <span>📖</span> Article Navigation
+                    </h3>
+                    <nav class="space-y-1 text-xs">
+                        <a href="#hero" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">1. Title & Hero</a>
+                        <a href="#abstract" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">2. Abstract & Intro</a>
+                        <a href="#calculator" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">3. 24h Routine Diagnostic</a>
+                        <a href="#challenges" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">4. Why Athletes Struggle</a>
+                        <a href="#timemanagement" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">5. Time Management Tactics</a>
+                        <a href="#skills" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">6. Athletic Skill Matrix</a>
+                        <a href="#impact" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">7. Academic & Personal Impact</a>
+                        <a href="#quiz" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">8. Self-Assessment Quiz</a>
+                        <a href="#notepad" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">9. Goal Reflection Pad</a>
+                        <a href="#references" class="toc-link block px-3 py-2 rounded-lg text-slate-300 light:text-slate-600 hover:bg-ocean-900/40 light:hover:bg-slate-100 hover:text-ocean-400 transition-colors font-medium">10. Conclusion & References</a>
+                    </nav>
+                </div>
+
+                <!-- Academic Info Tag -->
+                <div class="p-4 rounded-2xl bg-ocean-950/80 light:bg-sky-50 border border-ocean-800/60 light:border-sky-200 text-xs text-ocean-300 light:text-ocean-800 space-y-2">
+                    <div class="font-bold text-ocean-400 light:text-ocean-700 flex items-center gap-1.5">
+                        <span>🎓</span> Academic Publication
                     </div>
-<!-- ... existing code ... -->
-                    <!-- Skill Transfer Matrix -->
-                    <div class="my-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm backdrop-blur-md">
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Athletic Skill Transfer Matrix</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <button onclick="selectSkillTab('speed', 'Speed & Agility')" class="skill-tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-indigo-600 text-white" data-skill="speed">Speed & Agility</button>
-                            <button onclick="selectSkillTab('endurance', 'Endurance & Stamina')" class="skill-tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600" data-skill="endurance">Endurance & Stamina</button>
-                            <button onclick="selectSkillTab('focus', 'Mental Focus')" class="skill-tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600" data-skill="focus">Mental Focus</button>
-                        </div>
-                        <div id="skill-content" class="p-4 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200/80 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-300">
-                            Fast twitch development transferred from sprinting enhances reaction timing in tactical decision making.
-                        </div>
-                    </div>
-<!-- ... existing code ... -->
-                    <!-- Self-Assessment Quiz -->
-                    <div class="my-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm backdrop-blur-md">
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Self-Assessment Quiz</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">1. How many hours of sleep do you average per night?</p>
-                                <div class="space-y-2">
-                                    <label class="flex items-center text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
-                                        <input type="radio" name="quiz-q1" value="low" onclick="trackQuizOption('q1', 'Less than 6 hours')" class="mr-2 text-indigo-600 focus:ring-indigo-500"> Less than 6 hours
-                                    </label>
-                                    <label class="flex items-center text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
-                                        <input type="radio" name="quiz-q1" value="mid" onclick="trackQuizOption('q1', '6 to 7.5 hours')" class="mr-2 text-indigo-600 focus:ring-indigo-500"> 6 to 7.5 hours
-                                    </label>
-                                    <label class="flex items-center text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
-                                        <input type="radio" name="quiz-q1" value="high" onclick="trackQuizOption('q1', '8+ hours')" class="mr-2 text-indigo-600 focus:ring-indigo-500"> 8+ hours
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 flex gap-3">
-                            <button onclick="calculateQuizScore()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-lg transition-colors shadow-sm">Submit Quiz</button>
-                            <button onclick="resetQuiz()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-medium text-sm rounded-lg transition-colors">Reset</button>
-                        </div>
-                        <div id="quiz-result" class="mt-4 hidden p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl border border-indigo-200 dark:border-indigo-800/50 text-sm text-indigo-900 dark:text-indigo-200 font-medium"></div>
+                    <p class="text-slate-400 light:text-slate-600 leading-relaxed">
+                        CS30 - Websites and Online Communication Interactive Showcase.
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN ARTICLE & INTERACTIVE CONTENT -->
+        <main class="lg:col-span-9 space-y-12">
+
+            <!-- HERO SECTION -->
+            <section id="hero" class="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-gradient-to-br from-navy-900 via-navy-950 to-slate-950 light:from-slate-100 light:via-sky-50 light:to-blue-50 border border-ocean-900/60 light:border-sky-200 shadow-2xl">
+                <div class="absolute -top-32 -right-32 w-96 h-96 bg-ocean-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6 max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-ocean-500/10 border border-ocean-500/30 text-ocean-300 light:text-ocean-700 text-xs font-semibold uppercase tracking-wider">
+                        <span>CS30 Article Feature</span>
+                        <span>•</span>
+                        <span>Student-Athlete Research</span>
                     </div>
 
-                    <!-- Interactive Pad / Notepad -->
-                    <div class="my-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm backdrop-blur-md">
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Personal Key Takeaways Notepad</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Note down your main learnings or routine adjustments here.</p>
-                        <textarea id="notepad-input" rows="4" class="w-full p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3" placeholder="Type your notes here..."></textarea>
-                        <div class="flex gap-3">
-                            <button onclick="saveNotes()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors">Save Notes</button>
-                            <button onclick="clearNotes()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg transition-colors">Clear</button>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white light:text-slate-900 leading-tight">
+                        Balancing the <span class="text-transparent bg-clip-text bg-gradient-to-r from-ocean-400 via-ocean-300 to-electric">Court</span> and the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-ocean-300">Classroom</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 light:text-slate-600 leading-relaxed font-normal">
+                        The Impact of Student-Athlete Responsibilities on Academic Life — An interactive examination of physical exertion, scholastic pressures, and actionable time management strategies.
+                    </p>
+
+                    <!-- METADATA CARDS -->
+                    <div class="pt-6 border-t border-slate-800/80 light:border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">AUTHOR</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">Jayson Paul C. Albaniel</span>
                         </div>
-                        <p id="notepad-status" class="mt-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium hidden">Notes saved successfully!</p>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">COURSE</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">CS30 Web Comm</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">PUBLICATION</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">Academic Research</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 light:text-slate-500 block font-medium">EST. READ TIME</span>
+                            <span class="text-slate-100 light:text-slate-900 font-bold">7 Minutes</span>
+                        </div>
                     </div>
-<!-- ... existing code ... -->
-    <!-- Scripts -->
+                </div>
+            </section>
+
+            <!-- ABSTRACT & INTRODUCTION -->
+            <section id="abstract" class="space-y-6">
+                <div class="p-6 sm:p-8 rounded-2xl glass-card border-l-4 border-l-ocean-500 space-y-3">
+                    <h2 class="text-xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                        <span>📜</span> Abstract
+                    </h2>
+                    <p class="text-slate-300 light:text-slate-700 text-sm sm:text-base leading-relaxed">
+                        Student-athletes face a continuous balancing act between academic expectations and athletic commitments. This paper examines how intense training schedules, game travel, and high performance pressures affect university coursework, mental health, and time management. It also highlights how athletic discipline, teamwork, and perseverance positively influence academic resilience and long-term personal success.
+                    </p>
+                </div>
+
+                <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                    <h3 class="text-2xl font-bold text-white light:text-slate-900 pt-2">1. Introduction</h3>
+                    <p>
+                        Entering college marks a major milestone for students, introducing greater academic independence and heightened performance expectations. For student-athletes, this transition carries a dual burden: achieving academic excellence while meeting strict physical and competitive expectations from coaches, teammates, and athletic programs.
+                    </p>
+                    <p>
+                        While athletics offers undeniable benefits—such as physical health, leadership training, and university pride—it also introduces severe time constraints. The challenge lies in harmonizing hours spent on the court with rigorous hours required in the classroom.
+                    </p>
+                </div>
+            </section>
+
+            <!-- WIDGET 1: 24-HOUR ROUTINE CALCULATOR -->
+            <section id="calculator" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 01</div>
+                        <h2 class="text-2xl font-bold text-white light:text-slate-900">24-Hour Routine & Burnout Calculator</h2>
+                    </div>
+                    <div id="hour-pill" class="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 self-start sm:self-auto">
+                        24 / 24 Hours Allocated
+                    </div>
+                </div>
+                <p class="text-sm text-slate-400 light:text-slate-600">
+                    Adjust the daily sliders to model a student-athlete's routine. See real-time time allocation on the chart and get an instant Burnout Risk Diagnostic.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+                    <!-- Sliders Column -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <!-- Sleep Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">😴 Sleep & Physical Recovery</span>
+                                <span id="val-sleep" class="text-ocean-400 font-mono font-bold">7 hrs</span>
+                            </div>
+                            <input type="range" id="input-sleep" min="2" max="12" value="7" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <!-- Class & Academics Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">📚 Classes, Study & Homework</span>
+                                <span id="val-class" class="text-ocean-400 font-mono font-bold">6 hrs</span>
+                            </div>
+                            <input type="range" id="input-class" min="1" max="12" value="6" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <!-- Athletic Practice Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🏸 Sports Practice, Gym & Film</span>
+                                <span id="val-training" class="text-ocean-400 font-mono font-bold">5 hrs</span>
+                            </div>
+                            <input type="range" id="input-training" min="1" max="12" value="5" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <!-- Travel & Commute Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🚌 Travel & Commuting</span>
+                                <span id="val-travel" class="text-ocean-400 font-mono font-bold">2 hrs</span>
+                            </div>
+                            <input type="range" id="input-travel" min="0" max="8" value="2" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <!-- Personal / Rest Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300 light:text-slate-700">🎮 Meals, Social & Downtime</span>
+                                <span id="val-rest" class="text-ocean-400 font-mono font-bold">4 hrs</span>
+                            </div>
+                            <input type="range" id="input-rest" min="0" max="10" value="4" class="w-full h-2 bg-slate-800 light:bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart & Diagnostic Display -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-navy-900/80 light:bg-slate-100 border border-ocean-900/50 light:border-slate-200 text-center">
+                        <div class="relative w-44 h-44">
+                            <canvas id="timeChart" width="176" height="176"></canvas>
+                        </div>
+
+                        <div class="mt-4 space-y-2 w-full">
+                            <div class="text-xs text-slate-400 light:text-slate-500 font-semibold uppercase tracking-wider">Burnout Diagnostic</div>
+                            <div id="risk-badge" class="inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                Balanced Schedule
+                            </div>
+                            <p id="risk-desc" class="text-xs text-slate-300 light:text-slate-600 px-2 leading-relaxed">
+                                Adequate sleep and balanced practice time allow for steady academic performance without physical exhaustion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHY STUDENT-ATHLETES STRUGGLE -->
+            <section id="challenges" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">02.</span> Why Student-Athletes Struggle
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-ocean-400 flex items-center justify-center text-xl font-bold">⏰</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Physical & Mental Fatigue</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Early morning training coupled with high-intensity drills leaves student-athletes physically depleted during lectures. Brain fatigue directly impairs cognitive retention and active classroom participation.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold">✈️</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Travel & Missed Lectures</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Road games and tournament travel force athletes to miss lectures and group project sessions, creating an ongoing backlog of coursework that must be caught up on during transit.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl font-bold">📈</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Dual Pressure & Expectation</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            Coaches demand victory and peak physical performance, while academic institutions strictly enforce Grade Point Average (GPA) eligibility standards to remain on the team roster.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3 hover:border-ocean-500/40 transition-colors">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl font-bold">🛋️</div>
+                        <h3 class="text-lg font-bold text-white light:text-slate-900">Limited Recovery Windows</h3>
+                        <p class="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
+                            When non-athlete students use weekends for relaxation or exam preparation, student-athletes are frequently engaged in full-day tournament matches and post-game recovery.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TIME MANAGEMENT STRATEGIES -->
+            <section id="timemanagement" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">03.</span> Essential Time Management Tactics
+                </h2>
+
+                <div class="p-6 sm:p-8 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-4">
+                    <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                        To navigate these demands, successful student-athletes rely on structured scheduling strategies rather than spontaneous study habits.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 1</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Proactive Scheduling</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Mapping out exam dates, project deadlines, and travel schedules weeks in advance.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 2</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Micro-Study Windows</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Utilizing 20-minute windows between practice and classes for flashcard review.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-navy-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-ocean-400 light:text-ocean-600 uppercase">Tactic 3</span>
+                            <h4 class="text-sm font-bold text-white light:text-slate-900">Early Faculty Contact</h4>
+                            <p class="text-xs text-slate-400 light:text-slate-600">Communicating travel dates with professors during the first week of class.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WIDGET 2: ATHLETIC SKILL MATRIX EXPLORER -->
+            <section id="skills" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 02</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Athletic Skill Transfer Matrix</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Select a core athletic virtue to explore how court habits translate into classroom excellence.
+                    </p>
+                </div>
+
+                <!-- Skill Tabs -->
+                <div class="flex flex-wrap gap-2 border-b border-slate-800 light:border-slate-200 pb-4">
+                    <button class="skill-tab active-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-ocean-600 text-white shadow-md shadow-ocean-600/30" data-skill="discipline">
+                        🎯 Discipline & Routine
+                    </button>
+                    <button class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-navy-900 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-800" data-skill="teamwork">
+                        🤝 Teamwork & Collaboration
+                    </button>
+                    <button class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-navy-900 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-800" data-skill="perseverance">
+                        🔥 Resilience & Perseverance
+                    </button>
+                </div>
+
+                <!-- Active Skill Display Box -->
+                <div id="skill-display" class="p-6 rounded-2xl bg-navy-900/80 light:bg-slate-100 border border-ocean-900/50 light:border-slate-200 space-y-4">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
+
+            <!-- ACADEMIC & PERSONAL IMPACT -->
+            <section id="impact" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white light:text-slate-900 flex items-center gap-2">
+                    <span class="text-ocean-400">04.</span> Academic & Long-Term Personal Impact
+                </h2>
+
+                <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
+                    Despite the severe demands, research shows that participating in organized collegiate sports equips individuals with lifelong competitive advantages. The heightened discipline required to balance sports and study produces professionals who excel under high-stress corporate and academic environments.
+                </p>
+
+                <div class="p-6 rounded-2xl glass-card border border-ocean-900/40 light:border-slate-200 space-y-3">
+                    <blockquote class="italic text-slate-300 light:text-slate-700 text-sm border-l-2 border-ocean-400 pl-4 py-1">
+                        "The court teaches resilience that no textbook can replicate. When you learn to execute playbooks under fatigue, completing academic research deadlines becomes a structured, manageable challenge."
+                    </blockquote>
+                    <p class="text-xs text-ocean-400 font-semibold">— Jayson Paul C. Albaniel</p>
+                </div>
+            </section>
+
+            <!-- WIDGET 3: SELF-ASSESSMENT QUIZ -->
+            <section id="quiz" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-6">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 03</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Student-Athlete Readiness Assessment</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Evaluate your current time-management and athletic-academic balance.
+                    </p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6">
+                    <div class="space-y-3">
+                        <p class="text-sm font-semibold text-slate-200 light:text-slate-800">1. How far in advance do you notify instructors of athletic travel dates?</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="0" data-pts="3">First week of semester</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="0" data-pts="2">A week before travel</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="0" data-pts="1">The day before departure</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm font-semibold text-slate-200 light:text-slate-800">2. How do you utilize travel transit time during away matches?</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="1" data-pts="3">Structured reading & review</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="1" data-pts="2">Casual study if time permits</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="1" data-pts="1">Strictly rest/media</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm font-semibold text-slate-200 light:text-slate-800">3. Average night's sleep during competition season:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="2" data-pts="3">7 - 9 hours consistently</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="2" data-pts="2">5 - 6 hours</button>
+                            <button class="quiz-opt p-3 rounded-xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs text-left hover:border-ocean-500 transition-all" data-q="2" data-pts="1">Under 5 hours</button>
+                        </div>
+                    </div>
+
+                    <button id="calc-quiz" class="w-full py-3 rounded-xl bg-ocean-600 hover:bg-ocean-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-ocean-600/30">
+                        Calculate Readiness Score
+                    </button>
+                </div>
+
+                <div id="quiz-result" class="hidden p-6 rounded-2xl bg-navy-900/90 light:bg-slate-100 border border-ocean-500/40 text-center space-y-3">
+                    <div id="quiz-score-badge" class="text-2xl font-extrabold text-ocean-400">Score: 0 / 9</div>
+                    <p id="quiz-feedback" class="text-xs text-slate-300 light:text-slate-700 leading-relaxed"></p>
+                    <button id="reset-quiz" class="px-4 py-2 rounded-xl bg-slate-800 light:bg-slate-200 text-xs font-semibold hover:bg-slate-700">Retake Assessment</button>
+                </div>
+            </section>
+
+            <!-- WIDGET 4: GOAL REFLECTION NOTEPAD -->
+            <section id="notepad" class="p-6 sm:p-8 rounded-3xl glass-card border border-ocean-900/60 light:border-sky-200 space-y-4">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-ocean-400 light:text-ocean-600">Interactive Tool 04</div>
+                    <h2 class="text-2xl font-bold text-white light:text-slate-900">Personal Reflection Pad</h2>
+                    <p class="text-sm text-slate-400 light:text-slate-600 mt-1">
+                        Draft your academic and athletic goals below. Notes persist locally in your browser session.
+                    </p>
+                </div>
+
+                <textarea id="reflection-text" rows="4" placeholder="Write down your key balancing goals for this term..." class="w-full p-4 rounded-2xl bg-navy-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-300 text-slate-100 light:text-slate-900 text-xs focus:outline-none focus:border-ocean-500 transition-colors"></textarea>
+                <div class="flex justify-between items-center">
+                    <span id="save-status" class="text-xs text-slate-500">Draft saved locally.</span>
+                    <button id="save-note-btn" class="px-4 py-2 rounded-xl bg-ocean-600 hover:bg-ocean-500 text-white text-xs font-semibold transition-all">Save Reflection</button>
+                </div>
+            </section>
+
+            <!-- CONCLUSION & REFERENCES -->
+            <section id="references" class="space-y-6 pt-4 border-t border-slate-800/80 light:border-slate-200">
+                <h2 class="text-xl font-bold text-white light:text-slate-900">Conclusion & References</h2>
+                <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                    Balancing athletics and academics requires disciplined time management, clear communication, and personal resilience. By viewing sports not as a distraction but as a training ground for life skills, student-athletes can achieve excellence in both domains.
+                </p>
+
+                <div class="p-4 rounded-xl bg-navy-900/40 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-xs space-y-2 text-slate-400 light:text-slate-600">
+                    <div class="font-bold text-slate-300 light:text-slate-800">References & Further Reading:</div>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>NCAA Research: Student-Athlete Time Demands & Academic Performance (2022).</li>
+                        <li>Journal of College Student Development: Balancing Athletics and Academics.</li>
+                        <li>CS30 Course Syllabus — Websites and Online Communication Showcase Module.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 border-t border-slate-800/80 light:border-slate-200 bg-navy-950 light:bg-white py-8 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 light:text-slate-600">
+            <div>
+                © 2026 <span class="text-slate-300 light:text-slate-800 font-semibold">Jayson Paul C. Albaniel</span>. Created for CS30 Academic Research.
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>CS30 Interactive Web Article</span>
+                <span>•</span>
+                <a href="#hero" class="hover:text-ocean-400 transition-colors">Back to Top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT & CHART LOGIC -->
     <script>
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('themeToggle');
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-                const isDark = document.documentElement.classList.contains('dark');
-                gtag('event', 'click', {
-                    'event_category': 'UI',
-                    'event_label': 'Theme Toggle',
-                    'mode': isDark ? 'dark' : 'light'
+        // --- GOOGLE ANALYTICS INTERACTIVE TRACKING HELPER ---
+        function trackEvent(eventName, category, label, value) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, {
+                    'event_category': category,
+                    'event_label': label,
+                    'value': value
                 });
-            });
-        }
-
-        // 24-Hour Routine Calculator Tracking & Updates
-        function updateCalculator(sliderId) {
-            const slider = document.getElementById(sliderId);
-            const valSpan = document.getElementById('val-' + sliderId.replace('range-', ''));
-            if (slider && valSpan) {
-                valSpan.textContent = slider.value + ' hrs';
-            }
-
-            // Fire GA event on range interaction
-            gtag('event', 'change', {
-                'event_category': 'Widget',
-                'event_label': '24h Calculator Slider',
-                'metric_name': sliderId,
-                'value': parseFloat(slider.value)
-            });
-
-            // Recalculate burnout score logic
-            const t = parseFloat(document.getElementById('range-training').value || 0);
-            const w = parseFloat(document.getElementById('range-work').value || 0);
-            const s = parseFloat(document.getElementById('range-sleep').value || 0);
-            const l = parseFloat(document.getElementById('range-leisure').value || 0);
-
-            const totalHours = t + w + s + l;
-            let score = Math.min(100, Math.round(((t * 1.5 + w * 1.2) / (s * 1.2 + l + 0.1)) * 20));
-            
-            const scoreElem = document.getElementById('burnout-score');
-            const statusElem = document.getElementById('burnout-status');
-
-            if (scoreElem && statusElem) {
-                if (score > 70) {
-                    scoreElem.textContent = `High (${score}%)`;
-                    scoreElem.className = 'text-3xl font-extrabold text-rose-500 mb-1';
-                    statusElem.textContent = 'High strain risk! Increase sleep or leisure time.';
-                } else if (score > 40) {
-                    scoreElem.textContent = `Moderate (${score}%)`;
-                    scoreElem.className = 'text-3xl font-extrabold text-amber-500 mb-1';
-                    statusElem.textContent = 'Moderate workload balance. Keep an eye on rest.';
-                } else {
-                    scoreElem.textContent = `Low (${score}%)`;
-                    scoreElem.className = 'text-3xl font-extrabold text-emerald-500 mb-1';
-                    statusElem.textContent = 'Balanced load with optimal rest allocation.';
-                }
             }
         }
 
-        // Skill Transfer Matrix Tab Switcher
-        const skillContents = {
-            'speed': 'Fast twitch development transferred from sprinting enhances reaction timing in tactical decision making.',
-            'endurance': 'Cardiovascular capacity built through long-distance conditioning builds stamina for high-intensity work sessions.',
-            'focus': 'Mindfulness practice and athletic mental repetitions sharpen sustained focus under high-pressure scenarios.'
+        // --- THEME TOGGLE LOGIC ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            document.documentElement.classList.toggle('light', !isDark);
+            sunIcon.classList.toggle('hidden', isDark);
+            moonIcon.classList.toggle('hidden', !isDark);
+
+            // Track theme toggle event
+            trackEvent('toggle_theme', 'User Interaction', isDark ? 'Dark Mode' : 'Light Mode');
+        });
+
+        // --- READING PROGRESS BAR LOGIC ---
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+
+        // --- WIDGET 1: 24-HOUR ROUTINE CALCULATOR LOGIC ---
+        const inputs = {
+            sleep: document.getElementById('input-sleep'),
+            class: document.getElementById('input-class'),
+            training: document.getElementById('input-training'),
+            travel: document.getElementById('input-travel'),
+            rest: document.getElementById('input-rest')
         };
 
-        function selectSkillTab(skillKey, skillName) {
-            const contentBox = document.getElementById('skill-content');
-            if (contentBox && skillContents[skillKey]) {
-                contentBox.textContent = skillContents[skillKey];
+        const labels = {
+            sleep: document.getElementById('val-sleep'),
+            class: document.getElementById('val-class'),
+            training: document.getElementById('val-training'),
+            travel: document.getElementById('val-travel'),
+            rest: document.getElementById('val-rest')
+        };
+
+        const hourPill = document.getElementById('hour-pill');
+        const riskBadge = document.getElementById('risk-badge');
+        const riskDesc = document.getElementById('risk-desc');
+        const canvas = document.getElementById('timeChart');
+        const ctx = canvas ? canvas.getContext('2d') : null;
+
+        function updateCalculator() {
+            const values = {
+                sleep: parseInt(inputs.sleep.value),
+                class: parseInt(inputs.class.value),
+                training: parseInt(inputs.training.value),
+                travel: parseInt(inputs.travel.value),
+                rest: parseInt(inputs.rest.value)
+            };
+
+            // Update label displays
+            for (let key in values) {
+                labels[key].textContent = `${values[key]} hrs`;
             }
 
-            document.querySelectorAll('.skill-tab-btn').forEach(btn => {
-                if (btn.getAttribute('data-skill') === skillKey) {
-                    btn.className = 'skill-tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-indigo-600 text-white';
+            const total = Object.values(values).reduce((a, b) => a + b, 0);
+            hourPill.textContent = `${total} / 24 Hours Allocated`;
+
+            if (total > 24) {
+                hourPill.className = "px-3.5 py-1 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-400 border border-rose-500/30 self-start sm:self-auto";
+            } else if (total < 24) {
+                hourPill.className = "px-3.5 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30 self-start sm:self-auto";
+            } else {
+                hourPill.className = "px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 self-start sm:self-auto";
+            }
+
+            // Diagnostic Logic
+            if (values.sleep < 6 || (values.training + values.class) > 14) {
+                riskBadge.textContent = "⚠️ High Burnout Risk";
+                riskBadge.className = "inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-rose-500/20 text-rose-400 border border-rose-500/30";
+                riskDesc.textContent = "Deficit in sleep or extreme academic/athletic load detected. High susceptibility to chronic physical fatigue and cognitive drop.";
+            } else if (values.sleep < 7 || values.rest < 3) {
+                riskBadge.textContent = "⚡ Moderate Strain";
+                riskBadge.className = "inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                riskDesc.textContent = "Tightly packed schedule. Sleep or rest windows are tight; monitor stress levels closely.";
+            } else {
+                riskBadge.textContent = "✅ Balanced Schedule";
+                riskBadge.className = "inline-block px-4 py-1.5 rounded-xl font-bold text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                riskDesc.textContent = "Adequate sleep and balanced practice time allow for steady academic performance without physical exhaustion.";
+            }
+
+            drawChart(values);
+        }
+
+        function drawChart(vals) {
+            if (!ctx) return;
+            const width = canvas.width;
+            const height = canvas.height;
+            const total = Object.values(vals).reduce((a, b) => a + b, 0) || 1;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const colors = ['#38bdf8', '#0284c7', '#2563eb', '#f59e0b', '#10b981'];
+            const data = [vals.sleep, vals.class, vals.training, vals.travel, vals.rest];
+
+            let startAngle = -Math.PI / 2;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const outerRadius = width / 2 - 8;
+            const innerRadius = outerRadius - 28;
+
+            data.forEach((val, i) => {
+                const sliceAngle = (val / total) * (2 * Math.PI);
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, outerRadius, startAngle, startAngle + sliceAngle);
+                ctx.arc(centerX, centerY, innerRadius, startAngle + sliceAngle, startAngle, true);
+                ctx.closePath();
+
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+
+                startAngle += sliceAngle;
+            });
+
+            // Center text
+            ctx.fillStyle = document.documentElement.classList.contains('light') ? '#0f172a' : '#ffffff';
+            ctx.font = 'bold 16px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(`${total}h`, centerX, centerY);
+        }
+
+        Object.keys(inputs).forEach(key => {
+            inputs[key].addEventListener('input', updateCalculator);
+            inputs[key].addEventListener('change', () => {
+                trackEvent('adjust_routine_slider', 'Interactive Calculator', key, parseInt(inputs[key].value));
+            });
+        });
+        updateCalculator();
+
+        // --- WIDGET 2: ATHLETIC SKILL MATRIX LOGIC ---
+        const skillData = {
+            discipline: {
+                title: "🎯 Discipline & Consistency",
+                court: "Adhering to strict 5:00 AM training regimens, repeating mechanical drills, maintaining physical nutrition.",
+                class: "Punctual assignment submission, consistent daily study blocks, resistance to procrastination during busy game weeks."
+            },
+            teamwork: {
+                title: "🤝 Teamwork & Strategic Collaboration",
+                court: "Communicating tactical calls under high pressure, trusting teammate positioning, executing synchronized plays.",
+                class: "Leading group research projects, delegating academic tasks according to strengths, managing conflict calmly."
+            },
+            perseverance: {
+                title: "🔥 Resilience & Game-Day Perseverance",
+                court: "Bouncing back from set deficits, processing tough losses constructively, pushing through physical fatigue.",
+                class: "Revising failed exam concepts, remaining focused under heavy exam schedules, maintaining GPA despite setbacks."
+            }
+        };
+
+        const skillDisplay = document.getElementById('skill-display');
+        const skillTabs = document.querySelectorAll('.skill-tab');
+
+        function loadSkill(key) {
+            const item = skillData[key];
+            if (!item) return;
+
+            skillDisplay.innerHTML = `
+                <h3 class="text-lg font-bold text-white light:text-slate-900">${item.title}</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="p-4 rounded-xl bg-navy-950/80 light:bg-white border border-slate-800 light:border-slate-200 space-y-2">
+                        <span class="text-xs font-bold text-ocean-400 uppercase tracking-wider block">On the Court 🏸</span>
+                        <p class="text-xs text-slate-300 light:text-slate-600 leading-relaxed">${item.court}</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-navy-950/80 light:bg-white border border-slate-800 light:border-slate-200 space-y-2">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">In the Classroom 📚</span>
+                        <p class="text-xs text-slate-300 light:text-slate-600 leading-relaxed">${item.class}</p>
+                    </div>
+                </div>
+            `;
+
+            skillTabs.forEach(tab => {
+                if (tab.dataset.skill === key) {
+                    tab.className = "skill-tab active-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-ocean-600 text-white shadow-md shadow-ocean-600/30";
                 } else {
-                    btn.className = 'skill-tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600';
+                    tab.className = "skill-tab px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-navy-900 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-800";
                 }
-            });
-
-            // Fire GA event on tab selection
-            gtag('event', 'select_content', {
-                'event_category': 'Widget',
-                'event_label': 'Skill Matrix Tab',
-                'skill': skillName
             });
         }
 
-        // Self-Assessment Quiz Logic & GA Tracking
-        function trackQuizOption(questionId, optionLabel) {
-            gtag('event', 'select_option', {
-                'event_category': 'Widget',
-                'event_label': 'Self-Assessment Quiz Option',
-                'question_id': questionId,
-                'selected_option': optionLabel
+        skillTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const skillKey = tab.dataset.skill;
+                loadSkill(skillKey);
+                trackEvent('select_skill_tab', 'Skill Matrix', skillKey);
             });
-        }
+        });
+        loadSkill('discipline');
 
-        function calculateQuizScore() {
-            const resultBox = document.getElementById('quiz-result');
-            const q1 = document.querySelector('input[name="quiz-q1"]:checked');
-            
-            gtag('event', 'click', {
-                'event_category': 'Widget',
-                'event_label': 'Quiz Submit Button'
+        // --- WIDGET 3: QUIZ LOGIC ---
+        const quizAnswers = {};
+        const quizOpts = document.querySelectorAll('.quiz-opt');
+        const calcQuizBtn = document.getElementById('calc-quiz');
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResult = document.getElementById('quiz-result');
+        const quizScoreBadge = document.getElementById('quiz-score-badge');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        const resetQuizBtn = document.getElementById('reset-quiz');
+
+        quizOpts.forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                const q = opt.dataset.q;
+                const pts = parseInt(opt.dataset.pts);
+                quizAnswers[q] = pts;
+
+                // Track option selection
+                trackEvent('select_quiz_option', 'Readiness Assessment', `Question ${q}`, pts);
+
+                // Highlight selected
+                const siblings = opt.parentElement.querySelectorAll('.quiz-opt');
+                siblings.forEach(s => {
+                    s.classList.remove('border-ocean-500', 'bg-ocean-500/20');
+                });
+                opt.classList.add('border-ocean-500', 'bg-ocean-500/20');
             });
+        });
 
-            if (!q1) {
-                if (resultBox) {
-                    resultBox.textContent = "Please answer the questions before submitting.";
-                    resultBox.classList.remove('hidden');
-                }
+        calcQuizBtn.addEventListener('click', () => {
+            const answeredCount = Object.keys(quizAnswers).length;
+            if (answeredCount < 3) {
+                alert("Please answer all 3 questions before calculating your score.");
                 return;
             }
 
-            let text = "Based on your answer, your recovery plan is in optimal alignment.";
-            if (q1.value === 'low') {
-                text = "Notice: Sleep below 6 hours significantly increases stress response. Prioritize sleep extension.";
+            const score = Object.values(quizAnswers).reduce((a, b) => a + b, 0);
+
+            // Track quiz completion event
+            trackEvent('complete_quiz', 'Readiness Assessment', 'Score Result', score);
+
+            quizScoreBadge.textContent = `Score: ${score} / 9`;
+
+            if (score >= 8) {
+                quizFeedback.textContent = "🌟 Elite Preparation! You demonstrate top-tier proactive communication, productive travel habits, and disciplined sleep hygiene.";
+            } else if (score >= 5) {
+                quizFeedback.textContent = "👍 Solid Foundation. You manage major deadlines well but could optimize transit study windows or rest consistency.";
+            } else {
+                quizFeedback.textContent = "⚠️ High Overload Risk. Consider implementing structured scheduling, early professor notifications, and protected sleep windows.";
             }
 
-            if (resultBox) {
-                resultBox.textContent = text;
-                resultBox.classList.remove('hidden');
-            }
+            quizContainer.classList.add('hidden');
+            quizResult.classList.remove('hidden');
+        });
+
+        resetQuizBtn.addEventListener('click', () => {
+            for (let k in quizAnswers) delete quizAnswers[k];
+            quizOpts.forEach(opt => opt.classList.remove('border-ocean-500', 'bg-ocean-500/20'));
+            quizResult.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+
+            trackEvent('reset_quiz', 'Readiness Assessment', 'Reset Button Clicked');
+        });
+
+        // --- WIDGET 4: REFLECTION NOTEPAD PERSISTENCE ---
+        const reflectionText = document.getElementById('reflection-text');
+        const saveNoteBtn = document.getElementById('save-note-btn');
+        const saveStatus = document.getElementById('save-status');
+
+        if (localStorage.getItem('athlete_reflection')) {
+            reflectionText.value = localStorage.getItem('athlete_reflection');
         }
 
-        function resetQuiz() {
-            document.querySelectorAll('input[name="quiz-q1"]').forEach(i => i.checked = false);
-            const resultBox = document.getElementById('quiz-result');
-            if (resultBox) resultBox.classList.add('hidden');
+        saveNoteBtn.addEventListener('click', () => {
+            localStorage.setItem('athlete_reflection', reflectionText.value);
+            saveStatus.textContent = "Saved to local storage!";
+            saveStatus.className = "text-xs text-emerald-400 font-semibold";
 
-            gtag('event', 'click', {
-                'event_category': 'Widget',
-                'event_label': 'Quiz Reset Button'
+            // Track reflection save event
+            trackEvent('save_reflection', 'User Engagement', 'Note Saved', reflectionText.value.length);
+
+            setTimeout(() => {
+                saveStatus.textContent = "Draft saved locally.";
+                saveStatus.className = "text-xs text-slate-500";
+            }, 3000);
+        });
+
+        // --- GOOGLE ANALYTICS NAVIGATION & LINK CLICK TRACKING ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                trackEvent('navigate_section', 'Internal Navigation', targetId);
             });
-        }
-
-        // Interactive Notepad Logic & GA Tracking
-        function saveNotes() {
-            const input = document.getElementById('notepad-input');
-            const status = document.getElementById('notepad-status');
-            if (input) {
-                localStorage.setItem('article_user_notes', input.value);
-                if (status) {
-                    status.classList.remove('hidden');
-                    setTimeout(() => status.classList.add('hidden'), 3000);
-                }
-            }
-
-            gtag('event', 'click', {
-                'event_category': 'Widget',
-                'event_label': 'Notepad Save Button'
-            });
-        }
-
-        function clearNotes() {
-            const input = document.getElementById('notepad-input');
-            if (input) input.value = '';
-            localStorage.removeItem('article_user_notes');
-
-            gtag('event', 'click', {
-                'event_category': 'Widget',
-                'event_label': 'Notepad Clear Button'
-            });
-        }
-
-        // Load saved notes on page startup
-        window.addEventListener('DOMContentLoaded', () => {
-            const saved = localStorage.getItem('article_user_notes');
-            const input = document.getElementById('notepad-input');
-            if (saved && input) {
-                input.value = saved;
-            }
         });
     </script>
 </body>

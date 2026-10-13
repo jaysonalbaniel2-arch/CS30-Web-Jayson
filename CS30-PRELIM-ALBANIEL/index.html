@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The balance athlete code</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <span><i>⚡</i></span>
+                <span>The balance <span>Athlete</span></span>
+            </div>
+            
+            <nav>
+                <a href="#diagnostic">Diagnostic</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#matrix">Skill Matrix</a>
+                <a href="#pad">Goal Pad</a>
+                <a href="#feedback">Feedback</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <header class="hero-header">
+                <span class="badge">
+                    <i>🔥</i> High-Performance Lifestyle
+                </span>
+                <h1>
+                    Balancing Peak Athletic Performance and Daily Life Goals
+                </h1>
+                <div class="meta-info">
+                    <div class="author-info">
+                        <div class="avatar">JA</div>
+                        <span>Jayson Paul C. Albaniel</span>
+                    </div>
+                    <span>•</span>
+                    <span><i>⏱️</i> 8 min read</span>
+                    <span>•</span>
+                    <span><i>💡</i> Interactive Guide</span>
+                </div>
+            </header>
+
+            <!-- INTERACTIVE TOOL 01 -->
+            <section id="diagnostic" class="card-section">
+                <div class="section-header">
+                    <span class="tag">Interactive Tool 01</span>
+                    <h2>
+                        <i>📊</i> 24-Hour Life Balance &amp; Burnout Diagnostic
+                    </h2>
+                    <p>Adjust your daily hours allocation to calculate your burnout risk index in real time.</p>
+                </div>
+
+                <div class="diagnostic-grid">
+                    <div class="sliders-col">
+                        <div class="slider-group">
+                            <label>Training / Physical: <span id="val-train">8 hrs</span></label>
+                            <input type="range" min="0" max="16" value="8" id="slider-train">
+                        </div>
+                        <div class="slider-group">
+                            <label>Deep Work / Career: <span id="val-work">3 hrs</span></label>
+                            <input type="range" min="0" max="16" value="3" id="slider-work">
+                        </div>
+                        <div class="slider-group">
+                            <label>Sleep &amp; Recovery: <span id="val-sleep">8 hrs</span></label>
+                            <input type="range" min="0" max="16" value="8" id="slider-sleep">
+                        </div>
+                        <div class="slider-group">
+                            <label>Personal &amp; Social: <span id="val-social">5 hrs</span></label>
+                            <input type="range" min="0" max="16" value="5" id="slider-social">
+                        </div>
+                        <div class="total-display">
+                            <span>Total Allocated:</span>
+                            <span id="total-hours">24.0 / 24 hrs</span>
+                        </div>
+                    </div>
+
+                    <div class="result-col">
+                        <div class="chart-box">
+                            <canvas id="balanceCanvas"></canvas>
+                        </div>
+                        <div class="feedback-box">
+                            <h3 id="balance-status-title">Optimal Balance</h3>
+                            <p id="balance-status-desc">
+                                Great balance! Your current schedule provides adequate rest and active productivity without over-taxing your nervous system.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OBSTACLE MAP / CHALLENGES -->
+            <section id="challenges" class="card-section">
+                <div class="section-header">
+                    <span class="tag">Obstacle Map</span>
+                    <h2>Core Challenges in Peak Life Management</h2>
+                </div>
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <div class="challenge-title">
+                            <i>⚡</i>
+                            <span>Central Nervous System Fatigue</span>
+                        </div>
+                        <p>
+                            Heavy lifting or high-intensity intervals fatigue the CNS, manifesting not just as physical soreness but as reduced mental clarity and decision fatigue at work.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-title">
+                            <i>⏳</i>
+                            <span>Time Scarcity &amp; Friction</span>
+                        </div>
+                        <p>
+                            Logistical friction—commuting to gyms, meal preparation, and changing gear—erodes discretionary time needed for personal growth and relationships.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-title">
+                            <i>⚠️</i>
+                            <span>Prioritization Mismatch</span>
+                        </div>
+                        <p>
+                            Treating both daily life and athletic training with 'all-out' urgency during high-stress work quarters leads directly to adrenal exhaustion.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-title">
+                            <i>🥗</i>
+                            <span>Nutritional Deficits</span>
+                        </div>
+                        <p>
+                            Failing to fuel for caloric expenditure impairs recovery rates, immunity, and cognitive focus across demanding non-athletic tasks.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INTERACTIVE TOOL 02 - SKILL MATRIX -->
+            <section id="matrix" class="card-section">
+                <div class="section-header">
+                    <span class="tag">Interactive Tool 02</span>
+                    <h2>
+                        <i>🔄</i> Athletic Skill Transfer Matrix
+                    </h2>
+                    <p>Explore how athletic discipline directly translates into corporate and personal domain success.</p>
+                </div>
+
+                <div role="tablist" class="matrix-tabs">
+                    <button role="tab" aria-selected="true" class="tab-btn active">Tactical Discipline</button>
+                    <button role="tab" aria-selected="false" class="tab-btn">Resilience Under Stress</button>
+                    <button role="tab" aria-selected="false" class="tab-btn">Systematic Recovery</button>
+                </div>
+
+                <div class="matrix-content">
+                    <h3>Tactical Discipline</h3>
+                    <p>
+                        Athletes adhere strictly to playbooks, periodization schedules, and nutrition plans. In daily life, this translates into meticulous project management, consistent daily habits, and structured time-blocking.
+                    </p>
+                    <div class="matrix-domains">
+                        <div class="domain-card">
+                            <span><i>🏅</i> Sports Domain</span>
+                            <p>Executing set plays, monitoring heart-rate zones, following macrocycles.</p>
+                        </div>
+                        <div class="domain-card">
+                            <span><i>💼</i> Life/Career Domain</span>
+                            <p>Meeting strict project deadlines, batching deep-work tasks, maintaining routine.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INTERACTIVE TOOL 04 - GOAL PAD -->
+            <section id="pad" class="card-section">
+                <div class="section-header">
+                    <span class="tag">Interactive Tool 04</span>
+                    <h2>
+                        <i>📝</i> Goal &amp; Life Reflection Pad
+                    </h2>
+                    <p>Set actionable goals, organize training/recovery tasks, and track completed milestones locally.</p>
+                </div>
+                
+                <div class="goal-pad-container">
+                    <div class="goal-input-row">
+                        <input type="text" id="new-goal-input" placeholder="Add a new training or life goal...">
+                        <button id="add-goal-btn">Add Goal</button>
+                    </div>
+                    <ul id="goal-list" class="goal-list">
+                        <!-- Dynamic items will appear here -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FEEDBACK SECTION -->
+            <section id="feedback" class="card-section">
+                <hr class="divider">
+                <div class="feedback-container">
+                    <h3>Leave Your Article Feedback</h3>
+                    <div class="rating-row">
+                        <span>Rate Article:</span>
+                        <div class="stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                    <div id="feedback-success" class="feedback-alert">
+                        <i>✓</i>
+                        <span>Thank you! Your feedback has been recorded successfully.</span>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#diagnostic">Diagnostic</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#matrix">Matrix</a>
+                <a href="#pad">Reflection</a>
+                <a href="#feedback">Feedback</a>
+            </div>
+            <p>© <span>2026</span> The balance athlete code. Authored by Jayson Paul C. Albaniel.</p>
+            <p>Designed for peak athletes, professionals, and lifelong balance practitioners.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
